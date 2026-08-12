@@ -1,0 +1,31 @@
+generated: '2026-08-11'
+method: searched
+source: https://www.cosmoplat.com/help/detail/304/1038
+limit_count: 0
+limits: []
+headers_published: []
+exhaustion_status_code: null
+summary: >-
+  COSMOPlat publishes no rate limits for the IoT development platform API. The full
+  reference was transcribed on 2026-08-11: no quota, no throttle, no burst allowance, no
+  X-RateLimit-* / RateLimit-* / Retry-After header, and no 429 response appear anywhere.
+  The MQTT documentation states no connection or message-rate ceiling either.
+observed:
+- host: openapi.cosmoplat.com
+  method: probed
+  note: >-
+    Response headers on the gateway carry Access-Control-Allow-Origin, Allow and
+    Access-Control-Allow-Methods only. No rate-limit header was returned on any
+    unauthenticated request.
+  fetched: '2026-08-11'
+gaps:
+- id: no-published-limits
+  detail: Publish the per-tenant request ceiling and the window it applies over.
+- id: no-runtime-signal
+  detail: >-
+    Return RateLimit-Limit / RateLimit-Remaining / RateLimit-Reset (RFC 9331 style) and
+    Retry-After on 429. An agent needs the runtime signal more than the documented number,
+    and this API returns neither.
+x-evidence:
+- {url: 'https://www.cosmoplat.com/help/detail/304/1038', http_status: 200, fetched: '2026-08-11'}
+- {url: 'https://openapi.cosmoplat.com/', http_status: 200, fetched: '2026-08-11'}

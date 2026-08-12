@@ -1,0 +1,71 @@
+generated: '2026-08-11'
+method: searched
+source: https://www.cosmoplat.com/help/detail/304/1064
+name: COSMOPlat IoT event and streaming surface
+summary: >-
+  COSMOPlat's event surface is MQTT publish/subscribe on the IoT development platform,
+  plus a rule engine that can forward matched data to an HTTP API or a message queue.
+  There are no HTTP callback webhooks with a published registration API, and no
+  provider-published AsyncAPI document.
+surfaces:
+- kind: mqtt-subscribe
+  name: Tenant telemetry subscription
+  host: iot-mqtt.cosmoplat.com
+  port: 11883
+  tls: not documented
+  auth: MQTT username = 企业ID (enterprise ID), password = 企业密钥 (enterprise secret),
+    both issued in 企业中心 on the IoT platform
+  topics:
+  - 'tgwl/telemetry/{enterpriseId}/#'
+  - 'tgwl/telemetry/{enterpriseId}/{productIdentifier}'
+  docs: https://www.cosmoplat.com/help/detail/304/1064
+  prerequisite: The transport component (传输组件) must be activated by the platform system
+    administrator before a tenant can subscribe.
+- kind: mqtt-publish
+  name: Device telemetry ingest
+  host: iot.cosmoplat.com
+  port: 1883
+  tls: not documented
+  topics:
+  - v1/devices/me/telemetry
+  docs: https://www.cosmoplat.com/help/detail/304/1064
+- kind: rule-engine-forwarding
+  name: Rule chain data forwarding
+  description: >-
+    The platform overview states the rule engine can be configured to push matched data
+    to an API or to an MQ message queue. The rule-chain CRUD operations are published in
+    the API reference, but the forwarding target configuration schema is not.
+  docs: https://www.cosmoplat.com/help/detail/304/1012
+  api_operations:
+  - getRuleChains
+  - postRuleChain
+  - deleteRuleChainByRuleChainId
+transport_protocols_advertised:
+- HTTP
+- MQTT
+- CoAP
+- LWM2M
+- SNMP
+transport_protocols_source: https://www.cosmoplat.com/help/detail/304/1012
+asyncapi_published_by_provider: false
+webhook_registration_api_published: false
+artifacts:
+- asyncapi/cosmoplat-iot-telemetry-asyncapi.yml
+gaps:
+- id: no-tls-mqtt-port
+  detail: Only plaintext MQTT ports (1883 device, 11883 tenant) are documented. No
+    MQTTS/8883 port or TLS guidance is published.
+- id: no-published-asyncapi
+  detail: COSMOPlat publishes the broker hosts, topics and an example payload in prose
+    but serves no AsyncAPI document. Publishing one at a stable URL would make this
+    surface machine-discoverable.
+- id: no-per-product-payload-schema
+  detail: Telemetry payload keys are thing-model telemetry point identifiers configured
+    per product; no schema is published per product.
+x-evidence:
+- url: https://www.cosmoplat.com/help/detail/304/1064
+  http_status: 200
+  fetched: '2026-08-11'
+- url: https://www.cosmoplat.com/help/detail/304/1012
+  http_status: 200
+  fetched: '2026-08-11'

@@ -1,0 +1,171 @@
+asyncapi: 3.0.0
+info:
+  title: COSMOPlat IoT Telemetry (MQTT)
+  version: '1'
+  description: |
+    Machine-readable transcription of the COSMOPlat 物联开发平台 (IoT development platform)
+    数据流转引擎 / "data flow engine" documentation published at
+    https://www.cosmoplat.com/help/detail/304/1064
+
+    That page publishes the broker hosts and ports, the credential model, the topic
+    address patterns and a verbatim example message payload. COSMOPlat does not publish
+    an AsyncAPI document anywhere on cosmoplat.com; this document transcribes the
+    published prose so a machine can read the same surface.
+
+    GAPS THE PROVIDER HAS NOT PUBLISHED (left empty here rather than guessed):
+      * No TLS/secure MQTT port is documented — only plaintext 1883 and 11883.
+      * No per-product telemetry point schema is published; payload `data` is an open
+        object whose keys are the thing-model telemetry point identifiers (测点标识)
+        configured per product in 设备管理 › 产品管理.
+      * No QoS/retention/ordering guarantees are stated beyond the QoS 0 example.
+  contact:
+    name: COSMOPlat
+    email: market@cosmoplat.com
+    url: https://www.cosmoplat.com/help
+  externalDocs:
+    description: 数据流转引擎 (data flow engine)
+    url: https://www.cosmoplat.com/help/detail/304/1064
+  x-provenance:
+    authored_by: API Evangelist (catalog-authored)
+    method: generated
+    source: https://www.cosmoplat.com/help/detail/304/1064
+    generated: '2026-08-11'
+    note: >-
+      Transcribed from the provider's published HTML documentation. COSMOPlat does not
+      publish an AsyncAPI document; this is not a provider artifact. Re-harvest and
+      replace verbatim if COSMOPlat ever serves one.
+servers:
+  tenantSubscribe:
+    host: 'iot-mqtt.cosmoplat.com:11883'
+    protocol: mqtt
+    description: >-
+      Tenant-facing subscription broker. Authenticate with the enterprise ID as the MQTT
+      username and the enterprise secret as the password, both obtained from 企业中心
+      (enterprise center) after signing in to the IoT platform. The transport component
+      must be activated by the platform system administrator first.
+    security:
+      - $ref: '#/components/securitySchemes/enterpriseCredentials'
+  deviceIngest:
+    host: 'iot.cosmoplat.com:1883'
+    protocol: mqtt
+    description: >-
+      Device-facing ingest broker. Devices publish telemetry here on the ThingsBoard-style
+      v1/devices/me/telemetry topic.
+channels:
+  tenantTelemetryAll:
+    address: 'tgwl/telemetry/{enterpriseId}/#'
+    title: All device telemetry for a tenant
+    description: >-
+      Wildcard subscription delivering telemetry for every device belonging to the
+      enterprise (tenant).
+    servers:
+      - $ref: '#/servers/tenantSubscribe'
+    parameters:
+      enterpriseId:
+        description: 企业ID — the enterprise (tenant) identifier from 企业中心.
+        examples:
+          - 9a98aa30-575f-11ee-bb48-35cc84b1728f
+    messages:
+      telemetryEnvelope:
+        $ref: '#/components/messages/telemetryEnvelope'
+  tenantTelemetryByProduct:
+    address: 'tgwl/telemetry/{enterpriseId}/{productIdentifier}'
+    title: Device telemetry for one product
+    description: >-
+      Subscription delivering telemetry for the devices under a single product. The
+      product identifier (产品标识) is read from 设备管理 › 产品管理.
+    servers:
+      - $ref: '#/servers/tenantSubscribe'
+    parameters:
+      enterpriseId:
+        description: 企业ID — the enterprise (tenant) identifier from 企业中心.
+        examples:
+          - 9a98aa30-575f-11ee-bb48-35cc84b1728f
+      productIdentifier:
+        description: 产品标识 — the product identifier shown in 设备管理 › 产品管理.
+        examples:
+          - Product_k0o3xPUt1K
+    messages:
+      telemetryEnvelope:
+        $ref: '#/components/messages/telemetryEnvelope'
+  deviceTelemetry:
+    address: v1/devices/me/telemetry
+    title: Device telemetry publish
+    description: >-
+      Topic a connected device publishes its own telemetry on. Each key in the payload
+      must match a telemetry point identifier (测点标识) defined on the device's thing
+      model, otherwise the value is not delivered to subscribers.
+    servers:
+      - $ref: '#/servers/deviceIngest'
+    messages:
+      telemetryPoints:
+        $ref: '#/components/messages/telemetryPoints'
+operations:
+  receiveTenantTelemetryAll:
+    action: receive
+    channel:
+      $ref: '#/channels/tenantTelemetryAll'
+    summary: Subscribe to all telemetry for the tenant.
+  receiveTenantTelemetryByProduct:
+    action: receive
+    channel:
+      $ref: '#/channels/tenantTelemetryByProduct'
+    summary: Subscribe to telemetry for one product's devices.
+  sendDeviceTelemetry:
+    action: send
+    channel:
+      $ref: '#/channels/deviceTelemetry'
+    summary: Publish telemetry from a device.
+components:
+  securitySchemes:
+    enterpriseCredentials:
+      type: userPassword
+      description: >-
+        MQTT username = 企业ID (enterprise ID); MQTT password = 企业密钥 (enterprise
+        secret). Both are issued in 企业中心 on the IoT platform.
+  messages:
+    telemetryEnvelope:
+      name: telemetryEnvelope
+      title: Telemetry envelope delivered to tenant subscribers
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          data:
+            type: object
+            description: >-
+              The payload the device published, keyed by thing-model telemetry point
+              identifier (测点标识).
+            additionalProperties: true
+          version:
+            type: string
+            description: Envelope version. The documented example carries "1".
+          deviceId:
+            type: string
+            description: Identifier of the device that published the telemetry.
+          ts:
+            type: integer
+            description: Epoch milliseconds timestamp.
+      examples:
+        - name: documentedExample
+          summary: Verbatim example from 数据流转引擎 › 订阅消息内容说明
+          payload:
+            data:
+              x: 223
+            version: '1'
+            deviceId: 4f1076d0-5785-11ee-bb48-35cc84b1728f
+            ts: 1695194110372
+    telemetryPoints:
+      name: telemetryPoints
+      title: Raw telemetry published by a device
+      contentType: application/json
+      payload:
+        type: object
+        description: >-
+          Flat object whose keys are thing-model telemetry point identifiers (测点标识).
+        additionalProperties: true
+      examples:
+        - name: documentedExample
+          summary: Verbatim example from 数据流转引擎 › 发送遥测数据并订阅消息
+          payload:
+            x: '223'

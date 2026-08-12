@@ -1,0 +1,79 @@
+generated: '2026-08-11'
+method: searched
+source: https://www.cosmoplat.com/help/detail/304/1038
+docs: https://www.cosmoplat.com/help/detail/304/1038
+format: custom
+format_note: >-
+  Not RFC 9457. COSMOPlat publishes a single custom failure envelope in the 公共分类 ›
+  状态码描述 (common › status code description) section of the API reference. It is served as
+  application/json, not application/problem+json, and carries no `type` URI.
+envelope:
+  media_type: application/json
+  fields:
+  - name: status
+    type: integer
+    description: 状态码，和 httpCode 一致 — the status code, identical to the HTTP status
+      code.
+  - name: message
+    type: string
+    description: 状态描述 — human-readable status description. Published in Chinese.
+  - name: errorCode
+    type: integer
+    description: 错误码 — an application error code, distinct from `status`.
+  - name: timestamp
+    type: string
+    description: ISO 8601 timestamp of the failure.
+  example: |
+    {
+        "status": 500,
+        "message": "内部配置错误",
+        "errorCode": 2,
+        "timestamp": "2023-08-04T00:56:54.243+00:00"
+    }
+problems:
+- status: 500
+  title: 内部配置错误
+  title_en: Internal configuration error
+  error_code: 2
+  detail: The only concrete failure the reference publishes, given as the worked example
+    of the envelope.
+  source: https://www.cosmoplat.com/help/detail/304/1038
+gateway_errors:
+- host: openapi.cosmoplat.com
+  http_status: 200
+  body: '{"errCode":"UNKNOWN_ERR","errMsg":"网关入口异常。"}'
+  translation: Gateway entry exception.
+  note: >-
+    Observed on every path probed against the API gateway host on 2026-08-11, including a
+    control path that cannot exist. The gateway returns HTTP 200 for a failure and uses
+    errCode/errMsg, which is a DIFFERENT envelope from the status/message/errorCode/timestamp
+    one the reference documents. A client cannot distinguish success from failure by status
+    code at this layer.
+  method: probed
+error_code_registry_published: false
+gaps:
+- id: no-error-code-registry
+  detail: >-
+    `errorCode` is documented as a field but no registry of its values is published. One
+    example value (2) exists. An agent cannot branch on an error code it cannot enumerate.
+- id: no-per-operation-errors
+  detail: >-
+    None of the 26 documented operations lists its own 4xx/5xx responses. Only the single
+    global failure envelope is published.
+- id: gateway-returns-200-on-failure
+  detail: >-
+    openapi.cosmoplat.com answers failures with HTTP 200 and a JSON error body. Returning a
+    4xx/5xx status would let generic HTTP clients and agents detect the failure without
+    parsing the body.
+- id: not-rfc9457
+  detail: >-
+    Adopting application/problem+json (RFC 9457) with a stable `type` URI per problem would
+    make the failure surface machine-classifiable.
+x-evidence:
+- url: https://www.cosmoplat.com/help/detail/304/1038
+  http_status: 200
+  fetched: '2026-08-11'
+- url: https://openapi.cosmoplat.com/openapi.json
+  http_status: 200
+  fetched: '2026-08-11'
+  note: gateway error envelope, not a spec

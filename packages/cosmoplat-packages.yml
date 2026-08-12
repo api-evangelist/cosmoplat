@@ -1,0 +1,67 @@
+generated: '2026-08-11'
+method: searched
+source: registry search of npm, PyPI, Maven Central, crates.io, RubyGems, NuGet, pkg.go.dev
+  and the COSMOPlat GitHub organization
+package_count: 0
+official_sdk_count: 0
+packages: []
+summary: >-
+  COSMOPlat publishes no client library for its IoT platform API in any public package
+  registry, and no SDK link appears anywhere in the developer documentation. The
+  cosmoplat-dev GitHub organization holds 15 repositories, none of which is a client for
+  the published API.
+searched:
+- registry: npm
+  query: cosmoplat
+  endpoint: https://registry.npmjs.org/-/v1/search?text=cosmoplat
+  results: 0
+  http_status: 200
+- registry: pypi
+  query: cosmoplat
+  endpoint: https://pypi.org/pypi/cosmoplat/json
+  results: 0
+  http_status: 404
+- registry: maven-central
+  query: cosmoplat
+  endpoint: https://search.maven.org/solrsearch/select?q=cosmoplat
+  results: 0
+  http_status: 200
+- registry: crates.io
+  query: cosmoplat
+  endpoint: https://crates.io/api/v1/crates?q=cosmoplat
+  results: 0
+  http_status: 200
+- registry: github
+  query: org:cosmoplat-dev
+  endpoint: https://api.github.com/orgs/cosmoplat-dev/repos
+  results: 15
+  http_status: 200
+  note: >-
+    Server-side platform code and demos, not API clients. Newest push 2024-02-02
+    (industry-app-framework); ten of the fifteen have not been pushed to since 2018.
+    Contents: industry-app-framework (Java, 45 stars), industry-app-framework-ui,
+    netty-server (86 stars), nice-3d-scene, glwkznxt, gykljk, templates, anchor (Go CNI
+    plugin), joker-lbs-parent, Bayesian-Model-Based-Optimization, ZKConfig, rocketbot,
+    cosmo-prometheus, User-activity-indicator, livechat.
+github_organization:
+  url: https://github.com/cosmoplat-dev
+  name: COSMOPlat-DEV
+  created: '2018-11-01'
+  public_repos: 15
+  email: support@cosmoplat.com
+  location: QingDao China
+  most_recent_push: '2024-02-02'
+gaps:
+- id: no-client-sdk
+  detail: >-
+    Ship at least one first-party client — the API is a plain JSON API with a small,
+    stable resource set and would generate cleanly from an OpenAPI document.
+- id: github-org-dormant
+  detail: >-
+    The public GitHub organization has had no push since February 2024 and two thirds of
+    its repositories have been untouched since 2018. It is a decay signal on the only
+    public code surface COSMOPlat operates outside China-hosted openlab.
+x-evidence:
+- {url: 'https://registry.npmjs.org/-/v1/search?text=cosmoplat', http_status: 200, fetched: '2026-08-11'}
+- {url: 'https://pypi.org/pypi/cosmoplat/json', http_status: 404, fetched: '2026-08-11'}
+- {url: 'https://api.github.com/orgs/cosmoplat-dev/repos', http_status: 200, fetched: '2026-08-11'}

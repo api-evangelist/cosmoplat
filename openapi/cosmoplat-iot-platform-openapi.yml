@@ -1,0 +1,2260 @@
+openapi: 3.1.0
+info:
+  title: COSMOPlat IoT Platform OpenAPI
+  version: 线上 (online)
+  summary: Device, product, alarm, rule-chain, thing-model, telemetry and RPC operations for the COSMOPlat
+    (Kaos) industrial IoT platform.
+  description: "Machine-readable transcription of the COSMOPlat 物联开发平台 (IoT development platform) \"OpenApi-线上\"\
+    \ reference published by COSMOPlat at https://www.cosmoplat.com/help/detail/304/1038\n\nThe provider\
+    \ publishes this contract as an HTML reference table only — no OpenAPI, Swagger, Postman or other\
+    \ machine-readable artifact is served anywhere on cosmoplat.com. This document transcribes that reference\
+    \ so it can be read by a machine.\n\nGAPS THE PROVIDER HAS NOT PUBLISHED (deliberately left empty\
+    \ here rather than guessed):\n  * No base URL / server host is stated anywhere in the reference, so\
+    \ `servers` is omitted.\n  * No authentication scheme is documented for these operations, so `securitySchemes`\
+    \ is empty.\n  * No per-operation 4xx/5xx catalogue is published; the single documented failure envelope\
+    \ from 公共分类 › 状态码描述 is wired as the `default` response.\n"
+  contact:
+    name: COSMOPlat
+    email: market@cosmoplat.com
+    url: https://www.cosmoplat.com/help
+  x-provenance:
+    authored_by: API Evangelist (catalog-authored)
+    method: generated
+    source: https://www.cosmoplat.com/help/detail/304/1038
+    generated: '2026-08-11'
+    note: Transcribed field-for-field from the provider's published HTML API reference. COSMOPlat does
+      not publish an OpenAPI document; this is not a provider artifact. Re-harvest and replace verbatim
+      if COSMOPlat ever serves one.
+externalDocs:
+  description: COSMOPlat IoT platform documentation
+  url: https://www.cosmoplat.com/help/detail/304/1012
+tags:
+- name: Product Management
+- name: Device Management
+- name: Alarm Rules
+- name: Alarm Records
+- name: Rule Chains
+- name: Thing Model (Telemetry Profile)
+- name: Time-series Data
+- name: Attribute Data
+- name: Device RPC
+paths:
+  /pageTbProductManage:
+    get:
+      operationId: getPageTbProductManage
+      summary: 分页查询产品信息
+      tags:
+      - Product Management
+      parameters:
+      - name: page
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 页数（从0开始）
+        example: '0'
+      - name: pageSize
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 每页最大数量
+        example: '30'
+      - name: identifier
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 产品标识
+      - name: textSearch
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 产品名称
+      - name: strNodeType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 节点类型： DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：TB_PRODUCT_MANAGE
+                            id:
+                              type: string
+                              description: 产品ID
+                          description: 产品ID
+                        createdTime:
+                          type: number
+                          description: 创建时间
+                        tenantId:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值-TENANT
+                            id:
+                              type: string
+                              description: 租户ID
+                          description: 租户
+                        name:
+                          type: string
+                          description: 产品名称
+                        description:
+                          type: string
+                          description: 产品描述
+                        image:
+                          type: string
+                          description: 图片
+                        type:
+                          type: string
+                          description: 类型
+                        transportType:
+                          type: string
+                          description: 传输类型：DEFAULT，MQTT，LWM2M，SNMP，CoAP
+                        defaultRuleChainId:
+                          type: string
+                          description: 规则链ID
+                        nodeType:
+                          type: string
+                          description: 节点类型，DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备
+                        tbSupplierName:
+                          type: string
+                          description: 生产厂商
+                        identifier:
+                          type: string
+                          description: 产品标识
+                        productModel:
+                          type: string
+                          description: 产品型号
+                    description: 业务数据
+                  totalPages:
+                    type: number
+                    description: 总页数
+                  totalElements:
+                    type: number
+                    description: 总条数
+                  hasNext:
+                    type: boolean
+                    description: 是否存在下一条记录
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 分页查询产品信息
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /tbProductManage:
+    post:
+      operationId: postTbProductManage
+      summary: 创建产品
+      tags:
+      - Product Management
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 产品名称
+                nodeType:
+                  type: string
+                  description: 节点类型：DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备
+                defaultRuleChainId:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: 规则链ID
+                    entityType:
+                      type: string
+                      description: 类型：固定值-RULE_CHAIN
+                  required:
+                  - id
+                  - entityType
+                transportType:
+                  type: string
+                  description: 传输类型：DEFAULT，MQTT，LWM2M，SNMP，CoAP
+              required:
+              - name
+              - nodeType
+              - defaultRuleChainId
+              - transportType
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                      id:
+                        type: string
+                    description: 产品ID
+                  createdTime:
+                    type: number
+                    description: 创建时间
+                  tenantId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：TENANT
+                      id:
+                        type: string
+                        description: 租户ID
+                    description: 租户
+                  name:
+                    type: string
+                    description: 名称
+                  description:
+                    type: string
+                    description: 描述
+                  image:
+                    type: string
+                    description: 图片
+                  type:
+                    type: string
+                    description: 类型
+                  transportType:
+                    type: string
+                    description: 传输类型：DEFAULT，MQTT，LWM2M，SNMP，CoAP
+                  defaultRuleChainId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：RULE_CHAIN
+                      id:
+                        type: string
+                        description: 规则链ID
+                    description: 规则链ID
+                  nodeType:
+                    type: string
+                    description: 节点类型：DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备
+                  tbSupplierName:
+                    type: string
+                    description: 生产厂商
+                  identifier:
+                    type: string
+                    description: 产品标识
+                  productModel:
+                    type: string
+                    description: 产品型号
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 创建产品
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /tbProductManage/{tbProductManageId}:
+    delete:
+      operationId: deleteTbProductManageByTbProductManageId
+      summary: 删除产品
+      tags:
+      - Product Management
+      description: 成功httpCode返回200
+      parameters:
+      - name: tbProductManageId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 成功 / Success
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 删除产品
+        url: https://www.cosmoplat.com/help/detail/304/1038
+    get:
+      operationId: getTbProductManageByTbProductManageId
+      summary: 查询产品详情
+      tags:
+      - Product Management
+      parameters:
+      - name: tbProductManageId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                      id:
+                        type: string
+                    description: 产品ID
+                  createdTime:
+                    type: number
+                    description: 创建时间
+                  tenantId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：TENANT
+                      id:
+                        type: string
+                        description: 租户ID
+                    description: 租户
+                  name:
+                    type: string
+                    description: 名称
+                  description:
+                    type: string
+                    description: 描述
+                  image:
+                    type: string
+                    description: 图片
+                  type:
+                    type: string
+                    description: 类型
+                  transportType:
+                    type: string
+                    description: 传输类型：DEFAULT，MQTT，LWM2M，SNMP，CoAP
+                  defaultRuleChainId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：RULE_CHAIN
+                      id:
+                        type: string
+                        description: 规则链ID
+                    description: 规则链
+                  nodeType:
+                    type: string
+                    description: 节点类型：DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备
+                  tbSupplierName:
+                    type: string
+                    description: 生产厂商
+                  identifier:
+                    type: string
+                    description: 产品标识
+                  productModel:
+                    type: string
+                    description: 产品型号
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 查询产品详情
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /tenant/devicesnew:
+    get:
+      operationId: getTenantDevicesnew
+      summary: 分页查询设备信息
+      tags:
+      - Device Management
+      parameters:
+      - name: page
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 页数（从0开始）
+      - name: pageSize
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 每页最大数量
+      - name: productManageId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 产品配置id
+      - name: name
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 设备标识
+      - name: realName
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 设备名称
+      - name: nodeType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 节点类型： DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备
+      - name: active
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 设备状态true在线false离线
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：DEVICE
+                            id:
+                              type: string
+                              description: 设备ID
+                          description: 设备ID
+                        createdTime:
+                          type: number
+                          description: 创建时间
+                        tenantId:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：TENANT
+                            id:
+                              type: string
+                              description: 租户ID
+                          description: 租户
+                        name:
+                          type: string
+                          description: 设备标识
+                        realName:
+                          type: string
+                          description: 设备名称
+                        productManageId:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：TB_PRODUCT_MANAGE
+                            id:
+                              type: string
+                              description: 产品ID
+                          description: 产品
+                        description:
+                          type: string
+                          description: 描述
+                        image:
+                          type: string
+                          description: 图片
+                        active:
+                          type: boolean
+                          description: 设备状态true在线false离线
+                        nodeType:
+                          type: string
+                          description: 节点类型： DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备
+                        credentialsType:
+                          type: string
+                          description: 凭据类型：ACCESS_TOKEN，X509_CERTIFICATE，MQTT_BASIC，LWM2M_CREDENTIALS
+                        lastActivityTime:
+                          type: number
+                          description: 最近在线时间
+                        deviceCredentialsId:
+                          type: string
+                          description: 访问令牌
+                    description: 业务数据
+                  totalPages:
+                    type: number
+                    description: 总页数
+                  totalElements:
+                    type: number
+                    description: 总条数
+                  hasNext:
+                    type: boolean
+                    description: 是否存在下一条记录
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 分页查询设备信息
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /device:
+    post:
+      operationId: postDevice
+      summary: 创建设备
+      tags:
+      - Device Management
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                realName:
+                  type: string
+                  description: 设备名称
+                productManageId:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: 产品ID
+                    entityType:
+                      type: string
+                      description: 固定值：TB_PRODUCT_MANAGE
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                      id:
+                        type: string
+                        description: 设备ID
+                    description: 设备ID
+                  createdTime:
+                    type: number
+                    description: 创建时间
+                  tenantId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：TENANT
+                      id:
+                        type: string
+                        description: 租户ID
+                    description: 租户
+                  name:
+                    type: string
+                    description: 设备标识
+                  realName:
+                    type: string
+                    description: 设备名称
+                  productManageId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：TB_PRODUCT_MANAGE
+                      id:
+                        type: string
+                        description: 产品ID
+                    description: 产品
+                  description:
+                    type: string
+                    description: 设备描述
+                  image:
+                    type: string
+                    description: 图片
+                  active:
+                    type: string
+                    description: 设备状态true在线false离线
+                  lat:
+                    type: string
+                    description: 纬度
+                  lon:
+                    type: string
+                    description: 经度
+                  address:
+                    type: string
+                    description: 详细地址
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 创建设备
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /device/{deviceId}:
+    delete:
+      operationId: deleteDeviceByDeviceId
+      summary: 删除设备
+      tags:
+      - Device Management
+      description: 成功httpCode返回200
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 成功 / Success
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 删除设备
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /device/info/{deviceId}:
+    get:
+      operationId: getDeviceInfoByDeviceId
+      summary: 获取设备详情
+      tags:
+      - Device Management
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：DEVICE
+                      id:
+                        type: string
+                        description: 设备ID
+                    description: 设备ID
+                  createdTime:
+                    type: number
+                    description: 创建时间
+                  tenantId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：TENANT
+                      id:
+                        type: string
+                        description: 租户ID
+                    description: 租户
+                  name:
+                    type: string
+                    description: 设备标识
+                  realName:
+                    type: string
+                    description: 设备名称
+                  type:
+                    type: string
+                    description: 所属产品名称
+                  productManageId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：TB_PRODUCT_MANAGE
+                      id:
+                        type: string
+                        description: 产品ID
+                    description: 产品
+                  description:
+                    type: string
+                    description: 设备描述
+                  image:
+                    type: string
+                    description: 图片
+                  active:
+                    type: boolean
+                    description: 设备状态true在线false离线
+                  lat:
+                    type: string
+                    description: 纬度
+                  lon:
+                    type: string
+                    description: 经度
+                  address:
+                    type: string
+                    description: 详细地址
+                  nodeType:
+                    type: string
+                    description: 节点类型： DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备
+                  credentialsType:
+                    type: string
+                    description: 凭据类型：ACCESS_TOKEN，X509_CERTIFICATE，MQTT_BASIC，LWM2M_CREDENTIALS
+                  lastActivityTime:
+                    type: number
+                    description: 最近在线时间
+                  deviceCredentialsId:
+                    type: string
+                    description: 访问令牌
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 获取设备详情
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /alarm/setting/page:
+    post:
+      operationId: postAlarmSettingPage
+      summary: 分页查询告警规则
+      tags:
+      - Alarm Rules
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                page:
+                  type: number
+                  description: 页数
+                pageSize:
+                  type: number
+                  description: 页大小
+                deviceProductId:
+                  type: string
+                  description: 产品id
+                title:
+                  type: string
+                  description: 名称
+                deviceId:
+                  type: string
+                  description: 设备Id
+              required:
+              - deviceProductId
+              - title
+              - deviceId
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：ALARM_SETTING
+                            id:
+                              type: string
+                              description: 告警规则ID
+                          description: 告警规则ID
+                        createdTime:
+                          type: number
+                          description: 创建时间
+                        tenantId:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：TENANT
+                            id:
+                              type: string
+                              description: 租户ID
+                          description: 租户
+                        title:
+                          type: string
+                          description: 名称
+                        deviceProductId:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：TB_PRODUCT_MANAGE
+                            id:
+                              type: string
+                              description: 产品ID
+                          description: 产品ID
+                        description:
+                          type: string
+                          description: 告警规则描述
+                        status:
+                          type: number
+                          description: 状态：1-启用，0-禁用
+                        updatedTime:
+                          type: number
+                          description: 更新时间
+                        alarmData:
+                          type: string
+                          description: 告警规则信息
+                        deviceProductName:
+                          type: string
+                          description: 产品名称
+                        name:
+                          type: string
+                          description: 名称
+                    description: 业务数据
+                  totalPages:
+                    type: number
+                    description: 总页数
+                  totalElements:
+                    type: number
+                    description: 总记录数
+                  hasNext:
+                    type: boolean
+                    description: 是否有下一条记录
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 分页查询告警规则
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /alarm/setting:
+    post:
+      operationId: postAlarmSetting
+      summary: 创建告警规则
+      tags:
+      - Alarm Rules
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 报警规则名称
+                deviceProductId:
+                  type: string
+                  description: 产品
+                description:
+                  type: string
+                  description: 报警规则描述
+                alarmData:
+                  type: string
+                  description: 报警规则详情
+      responses:
+        '200':
+          description: 成功 / Success
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 创建告警规则
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /alarm/setting/{id}:
+    delete:
+      operationId: deleteAlarmSettingById
+      summary: 删除告警规则
+      tags:
+      - Alarm Rules
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 成功 / Success
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 删除告警规则
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /alarm/{entityType}/getTenantAlarms:
+    post:
+      operationId: postAlarmByEntityTypeGetTenantAlarms
+      summary: 分页查询告警记录
+      tags:
+      - Alarm Records
+      parameters:
+      - name: entityType
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                page:
+                  type: number
+                pageSize:
+                  type: number
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：ALARM
+                            id:
+                              type: string
+                              description: ID
+                          description: ID
+                        createdTime:
+                          type: number
+                          description: 创建时间
+                        tenantId:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：TENANT
+                            id:
+                              type: string
+                              description: 租户ID
+                          description: 租户
+                        type:
+                          type: string
+                          description: 告警规则
+                        originator:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：DEVICE
+                            id:
+                              type: string
+                              description: 设备ID
+                          description: 告警源头
+                        severity:
+                          type: string
+                          description: 告警级别：CRITICAL, MAJOR, MINOR, WARNING, INDETERMINATE
+                        status:
+                          type: string
+                          description: 状态：ACTIVE_UNACK, ACTIVE_ACK, CLEARED_UNACK, CLEARED_ACK
+                        startTs:
+                          type: number
+                          description: 开始时间
+                        endTs:
+                          type: number
+                          description: 结束时间
+                        ackTs:
+                          type: number
+                          description: 应答时间
+                        clearTs:
+                          type: number
+                          description: 清理时间
+                        handlerUserNickname:
+                          type: string
+                          description: 处理人昵称
+                        handlerDetails:
+                          type: string
+                          description: 处理详情
+                        handlerUserId:
+                          type: string
+                          description: 处理人ID
+                        deviceName:
+                          type: string
+                          description: 设备标识
+                        realName:
+                          type: string
+                          description: 设备名称
+                        name:
+                          type: string
+                          description: 告警规则
+                    description: 业务数据
+                  totalPages:
+                    type: number
+                    description: 总页数
+                  totalElements:
+                    type: number
+                    description: 总记录数
+                  hasNext:
+                    type: boolean
+                    description: 是否有下一条记录
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 分页查询告警记录
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /alarm/setAlarmDetails/{alarmId}:
+    post:
+      operationId: postAlarmSetAlarmDetailsByAlarmId
+      summary: 处理告警记录
+      tags:
+      - Alarm Records
+      description: 成功httpCode返回200。
+      parameters:
+      - name: alarmId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                handlerDetails:
+                  type: string
+                  description: 处理详情
+      responses:
+        '200':
+          description: 成功 / Success
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 处理告警记录
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /ruleChains:
+    get:
+      operationId: getRuleChains
+      summary: 分页查询规则链
+      tags:
+      - Rule Chains
+      parameters:
+      - name: page
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 页数（从0开始）
+      - name: pageSize
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 每页最大数量
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 类型
+      - name: textSearch
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 搜索文本
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：RULE_CHAIN
+                            id:
+                              type: string
+                              description: ID
+                          description: ID
+                        createdTime:
+                          type: number
+                          description: 创建时间
+                        tenantId:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：TENANT
+                            id:
+                              type: string
+                              description: 租户ID
+                          description: 租户ID
+                        name:
+                          type: string
+                          description: 名称
+                        type:
+                          type: string
+                          description: 类型
+                        firstRuleNodeId:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：RULE_NODE
+                            id:
+                              type: string
+                              description: 第一个RoleNode的ID
+                          description: 第一个RoleNode的ID
+                        root:
+                          type: boolean
+                          description: 是否是根规则链
+                        debugMode:
+                          type: boolean
+                          description: 调试模式
+                      required:
+                      - id
+                      - createdTime
+                      - tenantId
+                      - name
+                      - type
+                      - firstRuleNodeId
+                      - root
+                      - debugMode
+                    description: 业务数据
+                  totalPages:
+                    type: number
+                    description: 总页数
+                  totalElements:
+                    type: number
+                    description: 总记录数
+                  hasNext:
+                    type: boolean
+                    description: 是否有下一条记录
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 分页查询规则链
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /ruleChain:
+    post:
+      operationId: postRuleChain
+      summary: 创建规则链
+      tags:
+      - Rule Chains
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 名称
+                debugMode:
+                  type: boolean
+                  description: 是否调试
+                additionalInfo:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                      description: 描述
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：RULE_CHAIN
+                      id:
+                        type: string
+                        description: ID
+                    description: 规则链ID
+                  createdTime:
+                    type: number
+                    description: 创建时间
+                  additionalInfo:
+                    type: object
+                    properties:
+                      description:
+                        type: string
+                        description: 描述
+                    description: 额外信息
+                  tenantId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：TENANT
+                      id:
+                        type: string
+                        description: 租户ID
+                    description: 租户ID
+                  name:
+                    type: string
+                    description: 名称
+                  type:
+                    type: string
+                    description: 类型
+                  firstRuleNodeId:
+                    type: string
+                    description: 第一条规则链ID
+                  root:
+                    type: boolean
+                    description: 是否根规则链
+                  debugMode:
+                    type: boolean
+                    description: 调试模式
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 创建规则链
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /ruleChain/{ruleChainId}:
+    delete:
+      operationId: deleteRuleChainByRuleChainId
+      summary: 删除规则链
+      tags:
+      - Rule Chains
+      description: 成功httpCode返回200
+      parameters:
+      - name: ruleChainId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 成功 / Success
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 删除规则链
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /mergerTelemetryProfile:
+    post:
+      operationId: postMergerTelemetryProfile
+      summary: 保存/修改产品物模型测点信息
+      tags:
+      - Thing Model (Telemetry Profile)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 测点名称
+                dataType:
+                  type: string
+                  description: 数据类型
+                unit:
+                  type: string
+                  description: 单位
+                dataTypeId:
+                  type: string
+                  description: 数据类型ID
+                unitId:
+                  type: string
+                  description: 单位ID
+                cnName:
+                  type: string
+                  description: 测点名称
+                belongingstation:
+                  type: string
+                description:
+                  type: string
+                  description: 描述
+                AccessToken:
+                  type: string
+                enDataType:
+                  type: string
+                  description: 数据类型
+                label:
+                  type: string
+                labelList:
+                  type: array
+                  items:
+                    type: string
+                productManageId:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: 产品ID
+                    entityType:
+                      type: string
+                      description: 固定值-TB_PRODUCT_MANAGE
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  productManageId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：TB_PRODUCT_MANAGE
+                      id:
+                        type: string
+                        description: 产品ID
+                    description: 产品ID
+                  tenantId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：TENANT
+                      id:
+                        type: string
+                        description: 租户ID
+                    description: 租户ID
+                  name:
+                    type: string
+                    description: 名称
+                  cnName:
+                    type: string
+                    description: 名称
+                  unit:
+                    type: string
+                    description: 单位
+                  dataType:
+                    type: string
+                    description: 数据类型
+                  description:
+                    type: string
+                    description: 描述
+                  enDataType:
+                    type: string
+                    description: 英文数据类型
+                  unitId:
+                    type: string
+                    description: 单位ID
+                  dataTypeId:
+                    type: string
+                    description: 数据类型ID
+                  label:
+                    type: string
+                    description: 标签
+                  id:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：TB_PRODUCT_TELEMETRY_PROFILE
+                      id:
+                        type: string
+                        description: ID
+                    description: ID
+                  createdTime:
+                    type: number
+                    description: 创建时间
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 保存/修改产品物模型测点信息
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /device/telemetryProfile/mergerTelemetryProfile/{deviceId}:
+    post:
+      operationId: postDeviceTelemetryProfileMergerTelemetryProfileByDeviceId
+      summary: 保存/修改设备物模型测点信息
+      tags:
+      - Thing Model (Telemetry Profile)
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 物模型测点名称
+                dataType:
+                  type: string
+                  description: 数据类型名称
+                unit:
+                  type: string
+                  description: 单位名称
+                dataTypeId:
+                  type: string
+                  description: 数据类型ID
+                unitId:
+                  type: string
+                  description: 单位ID
+                cnName:
+                  type: string
+                  description: 物模型测点名称
+                belongingstation:
+                  type: string
+                description:
+                  type: string
+                  description: 描述
+                AccessToken:
+                  type: string
+                enDataType:
+                  type: string
+                  description: 数据类型名称
+                label:
+                  type: string
+                labelList:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deviceProfileId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值DEVICE_PROFILE
+                      id:
+                        type: string
+                        description: 设备配置ID
+                    description: 设备配置ID
+                  deviceId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：DEVICE
+                      id:
+                        type: string
+                        description: 设备ID
+                    description: 设备ID
+                  name:
+                    type: string
+                    description: 名称
+                  cnName:
+                    type: string
+                    description: 名称
+                  unit:
+                    type: string
+                    description: 单位
+                  dataType:
+                    type: string
+                    description: 数据类型
+                  description:
+                    type: string
+                    description: 描述
+                  enDataType:
+                    type: string
+                    description: 英文数据类型
+                  unitId:
+                    type: string
+                    description: 单位ID
+                  dataTypeId:
+                    type: string
+                    description: 数据类型ID
+                  label:
+                    type: string
+                    description: 标签
+                  id:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：DEVICE_TELEMETRY_PROFILE
+                      id:
+                        type: string
+                        description: ID
+                    description: ID
+                  createdTime:
+                    type: number
+                    description: 创建时间
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 保存/修改设备物模型测点信息
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /pageByTenantIdAndProductId:
+    get:
+      operationId: getPageByTenantIdAndProductId
+      summary: 分页查询产品物模型
+      tags:
+      - Thing Model (Telemetry Profile)
+      parameters:
+      - name: page
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 页数（从0开始）
+      - name: pageSize
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 每页最大数量
+      - name: tbProductManageId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 产品id
+      - name: textSearch
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 测点名称
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        productManageId:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：TB_PRODUCT_MANAGE
+                            id:
+                              type: string
+                              description: 产品ID
+                          description: 产品ID
+                        tenantId:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：TENANT
+                            id:
+                              type: string
+                              description: 租户ID
+                          description: 租户ID
+                        name:
+                          type: string
+                          description: 名称
+                        cnName:
+                          type: string
+                          description: 名称
+                        unit:
+                          type: string
+                          description: 单位
+                        dataType:
+                          type: string
+                          description: 数据类型
+                        description:
+                          type: string
+                          description: 描述
+                        enDataType:
+                          type: string
+                          description: 英文数据类型
+                        unitId:
+                          type: string
+                          description: 单位ID
+                        dataTypeId:
+                          type: string
+                          description: 数据类型ID
+                        label:
+                          type: string
+                          description: 标签
+                        id:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：TB_PRODUCT_TELEMETRY_PROFILE
+                            id:
+                              type: string
+                              description: ID
+                          description: ID
+                        createdTime:
+                          type: number
+                          description: 创建时间
+                    description: 业务数据
+                  totalPages:
+                    type: number
+                    description: 总页数
+                  totalElements:
+                    type: number
+                    description: 总记录数
+                  hasNext:
+                    type: boolean
+                    description: 是否存在下一条记录
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 分页查询产品物模型
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /device/telemetryProfilePage/{deviceId}:
+    get:
+      operationId: getDeviceTelemetryProfilePageByDeviceId
+      summary: 分页查询设备物模型
+      tags:
+      - Thing Model (Telemetry Profile)
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 页数（从0开始）
+      - name: pageSize
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 每页最大数量
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        deviceProfileId:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：DEVICE_PROFILE
+                            id:
+                              type: string
+                              description: 设备配置ID
+                          description: 设备配置ID
+                        deviceId:
+                          type: string
+                          description: 设备ID
+                        name:
+                          type: string
+                          description: 名称
+                        cnName:
+                          type: string
+                          description: 名称
+                        unit:
+                          type: string
+                          description: 单位
+                        dataType:
+                          type: string
+                          description: 数据类型
+                        description:
+                          type: string
+                          description: 描述
+                        enDataType:
+                          type: string
+                          description: 英文数据类型
+                        unitId:
+                          type: string
+                          description: 单位ID
+                        dataTypeId:
+                          type: string
+                          description: 数据类型ID
+                        label:
+                          type: string
+                          description: 标签
+                        id:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：DEVICE_TELEMETRY_PROFILE
+                            id:
+                              type: string
+                              description: ID
+                          description: ID
+                        createdTime:
+                          type: number
+                          description: 创建时间
+                    description: 业务数据
+                  totalPages:
+                    type: number
+                    description: 总页数
+                  totalElements:
+                    type: number
+                    description: 总记录数
+                  hasNext:
+                    type: boolean
+                    description: 是否有下一条记录
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 分页查询设备物模型
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /deleteTelemetryProfileById/{tbProductTelemetryProfileId}:
+    delete:
+      operationId: deleteDeleteTelemetryProfileByIdByTbProductTelemetryProfileId
+      summary: 根据测点id删除产品物模型测点信息
+      tags:
+      - Thing Model (Telemetry Profile)
+      description: 成功httpCode返回200
+      parameters:
+      - name: tbProductTelemetryProfileId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 成功 / Success
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 根据测点id删除产品物模型测点信息
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /device/telemetryProfile/deleteTelemetryProfileById/{deviceId}/{deviceTelemetryProfileId}:
+    delete:
+      operationId: deleteDeviceTelemetryProfileDeleteTelemetryProfileByIdByDeviceIdByDeviceTelemetryProfileId
+      summary: 根据测点id删除设备物模型测点信息
+      tags:
+      - Thing Model (Telemetry Profile)
+      description: 成功httpCode返回200
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: deviceTelemetryProfileId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 成功 / Success
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 根据测点id删除设备物模型测点信息
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /device/meta/{deviceId}/values/timeseries:
+    get:
+      operationId: getDeviceMetaByDeviceIdValuesTimeseries
+      summary: 查询历史设备遥测数据、查询最新设备遥测数据
+      tags:
+      - Time-series Data
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 页码
+      - name: pageSize
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 数据数量
+      - name: deviceTelemetryProfileId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 测点名称
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        deviceId:
+                          type: string
+                          description: 设备ID
+                        deviceRealName:
+                          type: string
+                          description: 设备实际名称
+                        deviceName:
+                          type: string
+                          description: 设备名称
+                        valueAsString:
+                          type: string
+                          description: string值
+                        value:
+                          type: string
+                          description: 值
+                        key:
+                          type: string
+                          description: key
+                        jsonValue:
+                          type: string
+                          description: json值
+                        strValue:
+                          type: string
+                          description: string值
+                        booleanValue:
+                          type: string
+                          description: boolean值
+                        longValue:
+                          type: string
+                          description: long值
+                        doubleValue:
+                          type: string
+                          description: double值
+                        dataType:
+                          type: string
+                          description: 数据类型
+                        ts:
+                          type: number
+                          description: 时间戳
+                    description: 业务数据
+                  totalPages:
+                    type: number
+                    description: 总页数
+                  totalElements:
+                    type: number
+                    description: 总记录数
+                  hasNext:
+                    type: boolean
+                    description: 是否有下一条记录
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 查询历史设备遥测数据、查询最新设备遥测数据
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /{entityType}/{entityId}/attributeProfilePage:
+    get:
+      operationId: getByEntityTypeByEntityIdAttributeProfilePage
+      summary: 查询最新设备属性数据
+      tags:
+      - Attribute Data
+      parameters:
+      - name: entityType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: entityId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: entityType
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 固定值-DEVICE
+      - name: entityId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 设备ID
+      - name: page
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 页码
+      - name: pageSize
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 每页数据条数
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        entityId:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：DEVICE
+                            id:
+                              type: string
+                              description: 设备ID
+                          description: 设备ID
+                        name:
+                          type: string
+                          description: 名称
+                        cnName:
+                          type: string
+                          description: 名称
+                        attrScope:
+                          type: string
+                          description: 范围
+                        unit:
+                          type: string
+                          description: 单位
+                        dataType:
+                          type: string
+                          description: 类型
+                        description:
+                          type: string
+                          description: 描述
+                        enDataType:
+                          type: string
+                          description: 英文数据类型
+                        unitId:
+                          type: string
+                          description: 单位ID
+                        dataTypeId:
+                          type: string
+                          description: 数据类型ID
+                        dataLimit:
+                          type: object
+                          properties:
+                            dataType:
+                              type: string
+                              description: 限制类型
+                            booleanList:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  value:
+                                    type: string
+                                  description:
+                                    type: string
+                                required:
+                                - value
+                                - description
+                              description: 条件列表
+                            max:
+                              type: number
+                              description: 最小值
+                            min:
+                              type: number
+                              description: 最大值
+                            unit:
+                              type: string
+                              description: 单位
+                            unitId:
+                              type: string
+                              description: 单位ID
+                            date:
+                              type: boolean
+                              description: 时间
+                          description: 数据限制
+                        value:
+                          type: string
+                          description: 值
+                        id:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：ATTRIBUTE_PROFILE
+                            id:
+                              type: string
+                              description: ID
+                          description: ID
+                        createdTime:
+                          type: number
+                          description: 创建时间
+                      required:
+                      - entityId
+                      - name
+                      - cnName
+                      - attrScope
+                      - unit
+                      - dataType
+                      - description
+                      - enDataType
+                      - unitId
+                      - dataTypeId
+                      - dataLimit
+                      - value
+                      - id
+                      - createdTime
+                    description: 业务数据
+                  totalPages:
+                    type: number
+                    description: 总页数
+                  totalElements:
+                    type: number
+                    description: 总记录数
+                  hasNext:
+                    type: boolean
+                    description: 是否有下一条记录
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 查询最新设备属性数据
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /rpc/oneway/{deviceId}:
+    post:
+      operationId: postRpcOnewayByDeviceId
+      summary: 设备调试指令下发_ONEWAY
+      tags:
+      - Device RPC
+      description: 成功httpCode返回200
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                  description: 方法，固定值：setApiCommand
+                params:
+                  type: object
+                  properties: {}
+                  description: 参数，json结构
+                timeout:
+                  type: number
+                  description: 超时时间
+      responses:
+        '200':
+          description: 成功 / Success
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 设备调试指令下发_ONEWAY
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /rpc/twoway/{deviceId}:
+    post:
+      operationId: postRpcTwowayByDeviceId
+      summary: 设备调试指令下发_TWOWAY
+      tags:
+      - Device RPC
+      description: 成功httpCode返回200
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                  description: 方法，固定值：setApiCommand
+                params:
+                  type: object
+                  properties: {}
+                  description: 参数，json结构
+                timeout:
+                  type: number
+                  description: 超时时间
+      responses:
+        '200':
+          description: 成功 / Success
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 设备调试指令下发_TWOWAY
+        url: https://www.cosmoplat.com/help/detail/304/1038
+components:
+  schemas:
+    Error:
+      type: object
+      description: 失败报文 / Failure envelope (公共分类 › 状态码描述)
+      properties:
+        status:
+          type: integer
+          description: 状态码，和 httpCode 一致 / status code, same as the HTTP status
+        message:
+          type: string
+          description: 状态描述 / status description
+        errorCode:
+          type: integer
+          description: 错误码 / error code
+        timestamp:
+          type: string
+          format: date-time
+          description: 时间戳 / timestamp
+      examples:
+      - status: 500
+        message: 内部配置错误
+        errorCode: 2
+        timestamp: '2023-08-04T00:56:54.243+00:00'

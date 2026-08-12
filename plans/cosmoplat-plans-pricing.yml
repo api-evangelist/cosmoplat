@@ -1,0 +1,35 @@
+generated: '2026-08-11'
+method: searched
+source: https://www.cosmoplat.com/
+plan_count: 0
+plans: []
+pricing_published: false
+pricing_url: null
+access_model:
+  pricing: unknown
+  onboarding: request
+summary: >-
+  COSMOPlat publishes no pricing page and no plan tiers. The site is structured as an
+  enterprise solutions catalogue — /product, /solution and /choice?solutionId=... pages
+  describe capabilities and case studies with no price, quota or tier anywhere. Access to
+  the IoT development platform runs through a system administrator: the documentation
+  states a tenant is provisioned by the 物联网平台管理员 (IoT platform administrator), or the
+  customer signs in with an existing 卡奥斯天云 (CUBA) tenant.
+probed:
+- {url: 'https://www.cosmoplat.com/pricing', http_status: 404}
+- {url: 'https://www.cosmoplat.com/price', http_status: 404}
+- {url: 'https://www.cosmoplat.com/product', http_status: 200, note: solution catalogue, no prices}
+- {url: 'https://www.cosmoplat.com/solution', http_status: 200, note: solution catalogue, no prices}
+contact_route:
+  sales_phone: 400-135-7277
+  sales_email: market@cosmoplat.com
+  work_order: https://tianyun.cosmoplat.com/#/crworkorder
+gaps:
+- id: no-published-pricing
+  detail: >-
+    Neither a price nor a free tier is published for any product, including the IoT
+    development platform and the OpenAPI hosting service. A buyer cannot estimate cost
+    without contacting sales.
+x-evidence:
+- {url: 'https://www.cosmoplat.com/pricing', http_status: 404, fetched: '2026-08-11'}
+- {url: 'https://www.cosmoplat.com/product', http_status: 200, fetched: '2026-08-11'}

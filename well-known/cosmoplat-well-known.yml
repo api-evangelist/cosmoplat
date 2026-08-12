@@ -1,0 +1,100 @@
+generated: '2026-08-11'
+method: probed
+source: live HTTP probe of every COSMOPlat host named in apis.yml
+summary: >-
+  No /.well-known/ document is served on any COSMOPlat host. Every path on
+  www.cosmoplat.com returns 404. openlab.cosmoplat.com and openapi.cosmoplat.com both
+  answer 200 for every path — including a nonsense control path — so their 200s are
+  catch-alls, not documents, and no WellKnown or SecurityTxt pointer is emitted.
+hosts:
+- host: https://www.cosmoplat.com
+  catch_all: false
+  control_probe:
+    path: /.well-known/control-probe-does-not-exist-xyz
+    status: 404
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 404}
+  - {path: /robots.txt, status: 200, note: 'served; disallows /assets/, /_nuxt/fonts/,
+      /api/, /search/, /user/, /personalCenter/, /evaluate/message, /exhibition/, /guide/'}
+  - {path: /sitemap.xml, status: 404, note: robots.txt advertises /sitemap.xml and /sitemap.txt;
+      both 404}
+  - {path: /sitemap.txt, status: 404}
+- host: https://openlab.cosmoplat.com
+  catch_all: true
+  catch_all_note: >-
+    Single-page app catch-all. Every path returns HTTP 200 with the identical 17,118-byte
+    HTML shell, including the control path, so no 200 on this host is evidence of a
+    document.
+  control_probe:
+    path: /.well-known/control-probe-does-not-exist-xyz
+    status: 200
+    content_type: text/html
+    bytes: 17118
+  documents:
+  - {path: /.well-known/security.txt, status: 200, verdict: html-shell, counted: false}
+  - {path: /.well-known/openid-configuration, status: 200, verdict: html-shell, counted: false}
+  - {path: /.well-known/oauth-authorization-server, status: 200, verdict: html-shell,
+    counted: false}
+  - {path: /.well-known/api-catalog, status: 200, verdict: html-shell, counted: false}
+  - {path: /.well-known/ai-plugin.json, status: 200, verdict: html-shell, counted: false}
+  - {path: /.well-known/agent-card.json, status: 200, verdict: html-shell, counted: false}
+  - {path: /.well-known/agent.json, status: 200, verdict: html-shell, counted: false}
+  - {path: /llms.txt, status: 200, verdict: html-shell, counted: false}
+  - {path: /robots.txt, status: 200, verdict: document, note: 'Allow: / ; Disallow: /api/'}
+  - {path: /sitemap.xml, status: 200, verdict: document, note: 10 URLs}
+- host: https://openapi.cosmoplat.com
+  catch_all: true
+  catch_all_note: >-
+    API gateway catch-all. Every path — spec paths, well-known paths and the control
+    path alike — returns HTTP 200 application/json with the identical 58-byte body
+    {"errCode":"UNKNOWN_ERR","errMsg":"网关入口异常。"} ("gateway entry exception"). No 200 on
+    this host is evidence of a document.
+  control_probe:
+    path: /control-probe-does-not-exist-xyz
+    status: 200
+    content_type: application/json
+    bytes: 58
+  documents:
+  - {path: /.well-known/security.txt, status: 200, verdict: gateway-error-envelope,
+    counted: false}
+  - {path: /.well-known/openid-configuration, status: 200, verdict: gateway-error-envelope,
+    counted: false}
+  - {path: /.well-known/oauth-authorization-server, status: 200, verdict: gateway-error-envelope,
+    counted: false}
+  - {path: /.well-known/api-catalog, status: 200, verdict: gateway-error-envelope,
+    counted: false}
+  - {path: /.well-known/ai-plugin.json, status: 200, verdict: gateway-error-envelope,
+    counted: false}
+  - {path: /.well-known/agent-card.json, status: 200, verdict: gateway-error-envelope,
+    counted: false}
+  - {path: /.well-known/agent.json, status: 200, verdict: gateway-error-envelope, counted: false}
+  - {path: /openapi.json, status: 200, verdict: gateway-error-envelope, counted: false}
+  - {path: /swagger.json, status: 200, verdict: gateway-error-envelope, counted: false}
+  - {path: /v3/api-docs, status: 200, verdict: gateway-error-envelope, counted: false}
+  - {path: /llms.txt, status: 200, verdict: gateway-error-envelope, counted: false}
+documents_served: 0
+pointer_emitted: false
+pointer_note: >-
+  No WellKnown and no SecurityTxt pointer is wired into apis.yml, because a pointer
+  asserts the provider SERVES that surface and COSMOPlat serves none of it. This file
+  records the absence.
+gaps:
+- id: no-security-txt
+  detail: 'No /.well-known/security.txt on any host. Publishing one at
+    https://www.cosmoplat.com/.well-known/security.txt with Contact: and Policy: fields
+    is the cheapest security-transparency signal available.'
+- id: no-api-catalog
+  detail: No /.well-known/api-catalog (RFC 9727). COSMOPlat operates an API gateway at
+    openapi.cosmoplat.com and an OpenAPI-hosting product, so a catalog document would
+    be a natural fit.
+- id: sitemap-advertised-but-404
+  detail: www.cosmoplat.com/robots.txt advertises both /sitemap.xml and /sitemap.txt;
+    both return 404.

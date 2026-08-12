@@ -1,0 +1,152 @@
+generated: '2026-08-11'
+method: derived
+source: openapi/cosmoplat-iot-platform-openapi.yml
+docs: https://www.cosmoplat.com/help/detail/304/1038
+summary: >-
+  Entity-relationship graph derived from the response field tables of the COSMOPlat IoT
+  platform API reference. Every entity reference in this API is a two-field object
+  {entityType, id} where entityType is a documented constant, which makes the graph
+  unusually explicit for a REST API of this size.
+entity_reference_convention:
+  shape: '{entityType: <CONSTANT>, id: <uuid string>}'
+  note: >-
+    Foreign keys are never bare ids. Every cross-entity pointer is an object carrying a
+    fixed entityType discriminator alongside the id, so a consumer can resolve a
+    reference without knowing the field name's meaning.
+entities:
+- name: Tenant
+  entity_type: TENANT
+  description: The enterprise account that owns products, devices, rules and data.
+  identified_by: '{entityType: TENANT, id}'
+  operations: []
+  note: Tenants are not created or listed through the published API; they appear only
+    as references on other entities.
+- name: Product
+  entity_type: TB_PRODUCT_MANAGE
+  description: A product definition — the template a device is created from. Carries
+    node type, transport type, identifier, default rule chain and manufacturer.
+  fields: [id, name, description, image, type, transportType, nodeType, identifier,
+    productModel, tbSupplierName, defaultRuleChainId, createdTime, tenantId]
+  enums:
+    nodeType: [DIRECT_DEVICE, GATEWAY_DEVICE, GATEWAY_CHILD_DEVICE]
+    transportType: [DEFAULT, MQTT, LWM2M, SNMP, CoAP]
+  operations: [getPageTbProductManage, postTbProductManage, getTbProductManageByTbProductManageId,
+    deleteTbProductManageByTbProductManageId]
+- name: Device
+  entity_type: DEVICE
+  description: A connected device instance. Carries online state, credentials type,
+    last-activity time and its access token.
+  fields: [id, name, realName, description, image, active, nodeType, credentialsType,
+    lastActivityTime, deviceCredentialsId, createdTime, tenantId, productManageId]
+  enums:
+    credentialsType: [ACCESS_TOKEN, X509_CERTIFICATE, MQTT_BASIC]
+    nodeType: [DIRECT_DEVICE, GATEWAY_DEVICE, GATEWAY_CHILD_DEVICE]
+  operations: [getTenantDevicesnew, postDevice, getDeviceInfoByDeviceId, deleteDeviceByDeviceId]
+- name: AlarmSetting
+  entity_type: null
+  description: An alarm rule bound to a product or device.
+  operations: [postAlarmSettingPage, postAlarmSetting, deleteAlarmSettingById]
+- name: Alarm
+  entity_type: ALARM
+  description: An alarm record raised against an originator entity, with severity,
+    acknowledge/clear lifecycle timestamps and handler details.
+  fields: [id, type, name, originator, severity, status, startTs, endTs, ackTs, clearTs,
+    handlerUserId, handlerUserNickname, handlerDetails, deviceName, realName, createdTime,
+    tenantId]
+  enums:
+    severity: [CRITICAL, MAJOR, MINOR, WARNING, INDETERMINATE]
+    status: [ACTIVE_UNACK, ACTIVE_ACK, CLEARED_UNACK, CLEARED_ACK]
+  operations: [postAlarmByEntityTypeGetTenantAlarms, postAlarmSetAlarmDetailsByAlarmId]
+- name: RuleChain
+  entity_type: RULE_CHAIN
+  description: A rule chain in the rule engine; a product names one as its default.
+  operations: [getRuleChains, postRuleChain, deleteRuleChainByRuleChainId]
+- name: ProductTelemetryProfile
+  entity_type: TB_PRODUCT_TELEMETRY_PROFILE
+  description: A thing-model telemetry point (测点) defined on a product — name, Chinese
+    name, unit, data type and label.
+  fields: [id, name, cnName, unit, dataType, enDataType, unitId, dataTypeId, label,
+    description, createdTime, productManageId, tenantId]
+  operations: [postMergerTelemetryProfile, getPageByTenantIdAndProductId, deleteDeleteTelemetryProfileByIdByTbProductTelemetryProfileId]
+- name: DeviceTelemetryProfile
+  entity_type: null
+  description: A thing-model telemetry point overridden or defined at the device level.
+  operations: [postDeviceTelemetryProfileMergerTelemetryProfileByDeviceId, getDeviceTelemetryProfilePageByDeviceId,
+    deleteDeviceTelemetryProfileDeleteTelemetryProfileByIdByDeviceIdByDeviceTelemetryProfileId]
+- name: TimeseriesReading
+  entity_type: null
+  description: A telemetry value written against a device's telemetry point, retrieved
+    latest or over a time window.
+  operations: [getDeviceMetaByDeviceIdValuesTimeseries]
+- name: AttributeReading
+  entity_type: null
+  description: The latest attribute values on an entity.
+  operations: [getByEntityTypeByEntityIdAttributeProfilePage]
+relationships:
+- from: Product
+  to: Tenant
+  kind: belongs_to
+  via: tenantId
+- from: Product
+  to: RuleChain
+  kind: has_one
+  via: defaultRuleChainId
+- from: Device
+  to: Product
+  kind: belongs_to
+  via: productManageId
+- from: Device
+  to: Tenant
+  kind: belongs_to
+  via: tenantId
+- from: Product
+  to: Device
+  kind: has_many
+  via: productManageId (query parameter on getTenantDevicesnew)
+- from: Alarm
+  to: Device
+  kind: belongs_to
+  via: originator (entityType DEVICE)
+- from: Alarm
+  to: Tenant
+  kind: belongs_to
+  via: tenantId
+- from: ProductTelemetryProfile
+  to: Product
+  kind: belongs_to
+  via: productManageId
+- from: ProductTelemetryProfile
+  to: Tenant
+  kind: belongs_to
+  via: tenantId
+- from: Product
+  to: ProductTelemetryProfile
+  kind: has_many
+  via: tbProductManageId (query parameter on getPageByTenantIdAndProductId)
+- from: Device
+  to: DeviceTelemetryProfile
+  kind: has_many
+  via: deviceId (path parameter)
+- from: Device
+  to: TimeseriesReading
+  kind: has_many
+  via: deviceId (path parameter)
+- from: RuleChain
+  to: Tenant
+  kind: belongs_to
+  via: tenantId
+lineage:
+  description: >-
+    The end-to-end data path documented across the reference and the data flow engine
+    page.
+  path: Device publishes telemetry on v1/devices/me/telemetry -> keys are matched against
+    the device/product ProductTelemetryProfile telemetry point identifiers -> stored as
+    TimeseriesReading -> evaluated by the Product's default RuleChain -> may raise an
+    Alarm and/or be forwarded to the tenant subscription topic tgwl/telemetry/{enterpriseId}/{productIdentifier}
+gaps:
+- id: no-tenant-api
+  detail: Tenant is referenced on every entity but has no published create/read/list
+    operation.
+- id: alarm-setting-not-typed
+  detail: Alarm rules are the one first-class resource whose reference object carries
+    no documented entityType constant.

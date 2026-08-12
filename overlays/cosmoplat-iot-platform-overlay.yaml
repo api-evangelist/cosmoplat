@@ -1,0 +1,85 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the COSMOPlat IoT Platform OpenAPI
+  version: 1.0.0
+extends: openapi/cosmoplat-iot-platform-openapi.yml
+x-provenance:
+  authored_by: API Evangelist
+  generated: '2026-08-11'
+  note: >-
+    Catalog-authored annotations layered over the transcribed COSMOPlat contract. These
+    record what API Evangelist observed and derived; they are not COSMOPlat statements and
+    the underlying openapi/ document is never mutated.
+actions:
+- target: $.info
+  update:
+    x-apievangelist-source: https://www.cosmoplat.com/help/detail/304/1038
+    x-apievangelist-contract-form: html-reference-table
+    x-apievangelist-machine-readable-published: false
+    x-apievangelist-language: zh-CN
+- target: $.info
+  update:
+    x-apievangelist-gaps:
+    - no-base-url-published
+    - no-authentication-documented
+    - no-idempotency-contract
+    - no-rate-limits-published
+    - no-versioning-scheme
+    - no-deprecation-policy
+    - no-status-page
+    - no-client-sdk
+    - error-envelope-not-rfc9457
+- target: $.paths['/rpc/oneway/{deviceId}'].post
+  update:
+    x-agentic-access:
+      action-class: acting
+      consequence: physical
+      note: >-
+        Fire-and-forget command dispatch to physical equipment. No idempotency key is
+        available, so a retried request may re-execute the command on the device.
+- target: $.paths['/rpc/twoway/{deviceId}'].post
+  update:
+    x-agentic-access:
+      action-class: acting
+      consequence: physical
+      note: >-
+        Request/response command dispatch to physical equipment. No idempotency key is
+        available; a timeout is indistinguishable from a failure to dispatch.
+- target: $.paths['/device'].post
+  update:
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+- target: $.paths['/tbProductManage'].post
+  update:
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+- target: $.paths['/alarm/setting'].post
+  update:
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+- target: $.paths['/ruleChain'].post
+  update:
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+- target: $.paths['/tenant/devicesnew'].get
+  update:
+    x-apievangelist-note: >-
+      The device list returns deviceCredentialsId — the device access token — in a plain
+      collection response. Any caller able to list devices can therefore impersonate every
+      one of them on the MQTT ingest broker. Consider omitting the credential from list
+      responses and exposing it only on an explicit, separately-authorized read.
+- target: $.paths['/deleteTelemetryProfileById/{tbProductTelemetryProfileId}'].delete
+  update:
+    x-apievangelist-note: >-
+      Path repeats the HTTP verb. A resource-oriented form such as DELETE
+      /productTelemetryProfiles/{id} would read the same to a machine and better to a
+      human.
+- target: $.paths['/alarm/{entityType}/getTenantAlarms'].post
+  update:
+    x-apievangelist-note: >-
+      RPC-shaped listing. Pagination for this operation is carried in the request body
+      rather than the query string, unlike the GET list operations in the same API.
