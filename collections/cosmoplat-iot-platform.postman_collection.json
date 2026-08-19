@@ -1,0 +1,4016 @@
+{
+  "item": [
+    {
+      "id": "1c643b28-64c8-4dd3-9a74-e85817f55485",
+      "name": "Product Management",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "92fd2507-a7e4-467b-9ecb-a7cdd3f2f6fb",
+          "name": "分页查询产品信息",
+          "request": {
+            "name": "分页查询产品信息",
+            "description": {},
+            "url": {
+              "path": [
+                "pageTbProductManage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>",
+                  "description": "(Required) 页数（从0开始）"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<string>",
+                  "description": "(Required) 每页最大数量"
+                },
+                {
+                  "disabled": false,
+                  "key": "identifier",
+                  "value": "<string>",
+                  "description": "产品标识"
+                },
+                {
+                  "disabled": false,
+                  "key": "textSearch",
+                  "value": "<string>",
+                  "description": "产品名称"
+                },
+                {
+                  "disabled": false,
+                  "key": "strNodeType",
+                  "value": "<string>",
+                  "description": "节点类型： DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4be34e2-1762-4472-bb90-ad5f3362eb49",
+              "name": "业务数据 / Business payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pageTbProductManage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "30"
+                    },
+                    {
+                      "key": "identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "textSearch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "strNodeType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"createdTime\": 722.6620404260453,\n      \"tenantId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"image\": \"string\",\n      \"type\": \"string\",\n      \"transportType\": \"string\",\n      \"defaultRuleChainId\": \"string\",\n      \"nodeType\": \"string\",\n      \"tbSupplierName\": \"string\",\n      \"identifier\": \"string\",\n      \"productModel\": \"string\"\n    },\n    {\n      \"id\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"createdTime\": 6000.234721050808,\n      \"tenantId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"image\": \"string\",\n      \"type\": \"string\",\n      \"transportType\": \"string\",\n      \"defaultRuleChainId\": \"string\",\n      \"nodeType\": \"string\",\n      \"tbSupplierName\": \"string\",\n      \"identifier\": \"string\",\n      \"productModel\": \"string\"\n    }\n  ],\n  \"totalPages\": 5271.583643750268,\n  \"totalElements\": 7882.396423044041,\n  \"hasNext\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b93a1d50-6b4b-4834-b30a-fc3154105514",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pageTbProductManage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "30"
+                    },
+                    {
+                      "key": "identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "textSearch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "strNodeType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "793f782c-5e63-4dce-9ef8-b61f9aa240b7",
+          "name": "创建产品",
+          "request": {
+            "name": "创建产品",
+            "description": {},
+            "url": {
+              "path": [
+                "tbProductManage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"nodeType\": \"<string>\",\n  \"defaultRuleChainId\": {\n    \"id\": \"<string>\",\n    \"entityType\": \"<string>\"\n  },\n  \"transportType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "497b9ca3-0604-411f-890c-c8a223ab2f28",
+              "name": "业务数据 / Business payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tbProductManage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"nodeType\": \"<string>\",\n  \"defaultRuleChainId\": {\n    \"id\": \"<string>\",\n    \"entityType\": \"<string>\"\n  },\n  \"transportType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"createdTime\": 9891.075252972822,\n  \"tenantId\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"image\": \"string\",\n  \"type\": \"string\",\n  \"transportType\": \"string\",\n  \"defaultRuleChainId\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"nodeType\": \"string\",\n  \"tbSupplierName\": \"string\",\n  \"identifier\": \"string\",\n  \"productModel\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1903ecc6-af7f-4b03-9bf6-02a0e5a0ffaa",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tbProductManage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"nodeType\": \"<string>\",\n  \"defaultRuleChainId\": {\n    \"id\": \"<string>\",\n    \"entityType\": \"<string>\"\n  },\n  \"transportType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d787fb73-0c7c-4709-b86f-3b503ea488f5",
+          "name": "删除产品",
+          "request": {
+            "name": "删除产品",
+            "description": {
+              "content": "成功httpCode返回200",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tbProductManage",
+                ":tbProductManageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tbProductManageId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df11b3ab-7bfc-48d9-a1d0-c3a8da146637",
+              "name": "成功 / Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tbProductManage",
+                    ":tbProductManageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tbProductManageId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b4f3b93d-3711-49fe-a028-c3cce5997c23",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tbProductManage",
+                    ":tbProductManageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tbProductManageId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5799ec14-2749-4366-8663-a982c81abc22",
+          "name": "查询产品详情",
+          "request": {
+            "name": "查询产品详情",
+            "description": {},
+            "url": {
+              "path": [
+                "tbProductManage",
+                ":tbProductManageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tbProductManageId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0927d55d-5f24-4509-9813-8ce243b27642",
+              "name": "业务数据 / Business payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tbProductManage",
+                    ":tbProductManageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tbProductManageId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"createdTime\": 1868.1731377816125,\n  \"tenantId\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"image\": \"string\",\n  \"type\": \"string\",\n  \"transportType\": \"string\",\n  \"defaultRuleChainId\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"nodeType\": \"string\",\n  \"tbSupplierName\": \"string\",\n  \"identifier\": \"string\",\n  \"productModel\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb704a11-1e1e-415d-b430-e197ca76fd71",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tbProductManage",
+                    ":tbProductManageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tbProductManageId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b6ae71af-8de9-4ce7-aec9-aaab41a0b165",
+      "name": "Device Management",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8986ae73-c2c4-4e11-9de4-1c922fa112ae",
+          "name": "分页查询设备信息",
+          "request": {
+            "name": "分页查询设备信息",
+            "description": {},
+            "url": {
+              "path": [
+                "tenant",
+                "devicesnew"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>",
+                  "description": "(Required) 页数（从0开始）"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<string>",
+                  "description": "(Required) 每页最大数量"
+                },
+                {
+                  "disabled": false,
+                  "key": "productManageId",
+                  "value": "<string>",
+                  "description": "产品配置id"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "设备标识"
+                },
+                {
+                  "disabled": false,
+                  "key": "realName",
+                  "value": "<string>",
+                  "description": "设备名称"
+                },
+                {
+                  "disabled": false,
+                  "key": "nodeType",
+                  "value": "<string>",
+                  "description": "节点类型： DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备"
+                },
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<string>",
+                  "description": "设备状态true在线false离线"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b06a146e-0685-4207-bf71-a2a003f18049",
+              "name": "业务数据 / Business payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tenant",
+                    "devicesnew"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productManageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "realName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nodeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"createdTime\": 860.6792013249387,\n      \"tenantId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"name\": \"string\",\n      \"realName\": \"string\",\n      \"productManageId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"description\": \"string\",\n      \"image\": \"string\",\n      \"active\": true,\n      \"nodeType\": \"string\",\n      \"credentialsType\": \"string\",\n      \"lastActivityTime\": 2539.5759352228743,\n      \"deviceCredentialsId\": \"string\"\n    },\n    {\n      \"id\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"createdTime\": 6649.895655006713,\n      \"tenantId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"name\": \"string\",\n      \"realName\": \"string\",\n      \"productManageId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"description\": \"string\",\n      \"image\": \"string\",\n      \"active\": true,\n      \"nodeType\": \"string\",\n      \"credentialsType\": \"string\",\n      \"lastActivityTime\": 738.1577374572456,\n      \"deviceCredentialsId\": \"string\"\n    }\n  ],\n  \"totalPages\": 2181.22332981969,\n  \"totalElements\": 9974.732452795699,\n  \"hasNext\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d07a0f6d-645d-4527-9ecb-135e53ac2733",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tenant",
+                    "devicesnew"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productManageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "realName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nodeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2020e0f-d337-4a63-beab-3c77f4a505b2",
+          "name": "创建设备",
+          "request": {
+            "name": "创建设备",
+            "description": {},
+            "url": {
+              "path": [
+                "device"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"realName\": \"<string>\",\n  \"productManageId\": {\n    \"id\": \"<string>\",\n    \"entityType\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "61d3475d-3cb7-4767-bf67-e82bc876c15f",
+              "name": "业务数据 / Business payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"realName\": \"<string>\",\n  \"productManageId\": {\n    \"id\": \"<string>\",\n    \"entityType\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"createdTime\": 699.8224799207309,\n  \"tenantId\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"name\": \"string\",\n  \"realName\": \"string\",\n  \"productManageId\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"description\": \"string\",\n  \"image\": \"string\",\n  \"active\": \"string\",\n  \"lat\": \"string\",\n  \"lon\": \"string\",\n  \"address\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6bda0d1-3230-40a0-90da-a89ab66802a4",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"realName\": \"<string>\",\n  \"productManageId\": {\n    \"id\": \"<string>\",\n    \"entityType\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5634930b-d2d3-4783-b78b-b75a7efb27db",
+          "name": "删除设备",
+          "request": {
+            "name": "删除设备",
+            "description": {
+              "content": "成功httpCode返回200",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "device",
+                ":deviceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1f5a2f73-fbe9-4346-aa22-90f9eeac14ac",
+              "name": "成功 / Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c48e484e-fe28-4c14-87be-7f4733ca4e70",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bad75ae5-b173-4110-b102-63e0671895cc",
+          "name": "获取设备详情",
+          "request": {
+            "name": "获取设备详情",
+            "description": {},
+            "url": {
+              "path": [
+                "device",
+                "info",
+                ":deviceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c1386ff-7e6f-4a46-9d28-4ec802ba1da5",
+              "name": "业务数据 / Business payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "info",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"createdTime\": 3334.2500860929135,\n  \"tenantId\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"name\": \"string\",\n  \"realName\": \"string\",\n  \"type\": \"string\",\n  \"productManageId\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"description\": \"string\",\n  \"image\": \"string\",\n  \"active\": false,\n  \"lat\": \"string\",\n  \"lon\": \"string\",\n  \"address\": \"string\",\n  \"nodeType\": \"string\",\n  \"credentialsType\": \"string\",\n  \"lastActivityTime\": 4201.31654898498,\n  \"deviceCredentialsId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33cd3c17-f032-4eea-b36c-b19d164f50b3",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "info",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "bad24deb-100e-4c57-a69d-75b5cf80887a",
+      "name": "Alarm Rules",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2e4c12f5-1a67-4689-8fec-e1de2927f2a9",
+          "name": "分页查询告警规则",
+          "request": {
+            "name": "分页查询告警规则",
+            "description": {},
+            "url": {
+              "path": [
+                "alarm",
+                "setting",
+                "page"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deviceProductId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"deviceId\": \"<string>\",\n  \"page\": \"<number>\",\n  \"pageSize\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9393f8ff-6c2e-4fa1-97f0-aa76b810846a",
+              "name": "业务数据 / Business payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm",
+                    "setting",
+                    "page"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deviceProductId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"deviceId\": \"<string>\",\n  \"page\": \"<number>\",\n  \"pageSize\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"createdTime\": 8964.870208428134,\n      \"tenantId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"title\": \"string\",\n      \"deviceProductId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"description\": \"string\",\n      \"status\": 1191.8962250749787,\n      \"updatedTime\": 7813.114190053231,\n      \"alarmData\": \"string\",\n      \"deviceProductName\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"id\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"createdTime\": 8810.56043161637,\n      \"tenantId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"title\": \"string\",\n      \"deviceProductId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"description\": \"string\",\n      \"status\": 2263.7306857885264,\n      \"updatedTime\": 2033.140098680123,\n      \"alarmData\": \"string\",\n      \"deviceProductName\": \"string\",\n      \"name\": \"string\"\n    }\n  ],\n  \"totalPages\": 5261.664235994867,\n  \"totalElements\": 4007.6665525745493,\n  \"hasNext\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48152b03-a782-4536-bdee-078a03372025",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm",
+                    "setting",
+                    "page"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deviceProductId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"deviceId\": \"<string>\",\n  \"page\": \"<number>\",\n  \"pageSize\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76659361-669a-4593-9966-caea90eaa50d",
+          "name": "创建告警规则",
+          "request": {
+            "name": "创建告警规则",
+            "description": {},
+            "url": {
+              "path": [
+                "alarm",
+                "setting"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"deviceProductId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"alarmData\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ef1a9787-fbde-40c1-9228-ec53073bc150",
+              "name": "成功 / Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm",
+                    "setting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"deviceProductId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"alarmData\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c6c9fff1-6440-45b9-88e9-8c836cdcc456",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm",
+                    "setting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"deviceProductId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"alarmData\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60ef7c62-c160-4faf-a9d8-c29f44b4a27b",
+          "name": "删除告警规则",
+          "request": {
+            "name": "删除告警规则",
+            "description": {},
+            "url": {
+              "path": [
+                "alarm",
+                "setting",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dbcb782c-2eec-4efc-b8b3-f572a29871e4",
+              "name": "成功 / Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm",
+                    "setting",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "63473845-a636-4323-9b41-5b4e731caff9",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm",
+                    "setting",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ee00af0b-d88d-4ffc-a7e0-8cc0d9a322be",
+      "name": "Alarm Records",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cc48ff6c-b468-4f57-9012-4d3a5dbe877c",
+          "name": "分页查询告警记录",
+          "request": {
+            "name": "分页查询告警记录",
+            "description": {},
+            "url": {
+              "path": [
+                "alarm",
+                ":entityType",
+                "getTenantAlarms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entityType",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": \"<number>\",\n  \"pageSize\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "12ce39b6-0528-4223-8d64-51fdce177a39",
+              "name": "业务数据 / Business payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm",
+                    ":entityType",
+                    "getTenantAlarms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": \"<number>\",\n  \"pageSize\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"createdTime\": 2767.3560125752715,\n      \"tenantId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"type\": \"string\",\n      \"originator\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"severity\": \"string\",\n      \"status\": \"string\",\n      \"startTs\": 8144.659078803626,\n      \"endTs\": 769.6406149932677,\n      \"ackTs\": 9143.260420482966,\n      \"clearTs\": 5825.030496907389,\n      \"handlerUserNickname\": \"string\",\n      \"handlerDetails\": \"string\",\n      \"handlerUserId\": \"string\",\n      \"deviceName\": \"string\",\n      \"realName\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"id\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"createdTime\": 1333.218737036952,\n      \"tenantId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"type\": \"string\",\n      \"originator\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"severity\": \"string\",\n      \"status\": \"string\",\n      \"startTs\": 3072.3367692205093,\n      \"endTs\": 7436.580596051332,\n      \"ackTs\": 4092.102436774354,\n      \"clearTs\": 1725.434145737761,\n      \"handlerUserNickname\": \"string\",\n      \"handlerDetails\": \"string\",\n      \"handlerUserId\": \"string\",\n      \"deviceName\": \"string\",\n      \"realName\": \"string\",\n      \"name\": \"string\"\n    }\n  ],\n  \"totalPages\": 4735.394673380659,\n  \"totalElements\": 2560.8189874577347,\n  \"hasNext\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2acd6e76-a9cf-4a44-a9eb-99b7a3310550",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm",
+                    ":entityType",
+                    "getTenantAlarms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": \"<number>\",\n  \"pageSize\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d004f595-b8db-453e-9112-95f87d1299d9",
+          "name": "处理告警记录",
+          "request": {
+            "name": "处理告警记录",
+            "description": {
+              "content": "成功httpCode返回200。",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alarm",
+                "setAlarmDetails",
+                ":alarmId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "alarmId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"handlerDetails\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7195f09c-5641-496a-974e-a788e2898c0c",
+              "name": "成功 / Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm",
+                    "setAlarmDetails",
+                    ":alarmId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "alarmId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"handlerDetails\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fa5c79e3-023f-408d-a750-fb2dff7a7792",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm",
+                    "setAlarmDetails",
+                    ":alarmId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "alarmId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"handlerDetails\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a265c850-7f11-4870-90fb-0108ce7da1e7",
+      "name": "Rule Chains",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "92f08cd7-9ca2-45cd-9158-b88f02bd09a3",
+          "name": "分页查询规则链",
+          "request": {
+            "name": "分页查询规则链",
+            "description": {},
+            "url": {
+              "path": [
+                "ruleChains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>",
+                  "description": "(Required) 页数（从0开始）"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<string>",
+                  "description": "(Required) 每页最大数量"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "类型"
+                },
+                {
+                  "disabled": false,
+                  "key": "textSearch",
+                  "value": "<string>",
+                  "description": "搜索文本"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aaefb29f-33e2-4125-92ea-1e85d5f9e5a4",
+              "name": "业务数据 / Business payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ruleChains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "textSearch",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"createdTime\": 9396.35218649844,\n      \"tenantId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"firstRuleNodeId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"root\": true,\n      \"debugMode\": true\n    },\n    {\n      \"id\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"createdTime\": 5772.816095047098,\n      \"tenantId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"firstRuleNodeId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"root\": true,\n      \"debugMode\": true\n    }\n  ],\n  \"totalPages\": 6611.974994046277,\n  \"totalElements\": 8849.72417232473,\n  \"hasNext\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "523380b8-bfaf-4c74-9ff8-fe25b949ae2d",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ruleChains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "textSearch",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3ea6c2e-4f03-4bce-b455-1dfd7889f187",
+          "name": "创建规则链",
+          "request": {
+            "name": "创建规则链",
+            "description": {},
+            "url": {
+              "path": [
+                "ruleChain"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"debugMode\": \"<boolean>\",\n  \"additionalInfo\": {\n    \"description\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4d026688-e463-4d00-a24f-a8f22f273edb",
+              "name": "业务数据 / Business payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ruleChain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"debugMode\": \"<boolean>\",\n  \"additionalInfo\": {\n    \"description\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"createdTime\": 1362.0160106021751,\n  \"additionalInfo\": {\n    \"description\": \"string\"\n  },\n  \"tenantId\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"firstRuleNodeId\": \"string\",\n  \"root\": true,\n  \"debugMode\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c111fdd7-789b-4446-bb1d-307df30eaabe",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ruleChain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"debugMode\": \"<boolean>\",\n  \"additionalInfo\": {\n    \"description\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bdac324b-d828-46fb-95bc-9e4ac60779ff",
+          "name": "删除规则链",
+          "request": {
+            "name": "删除规则链",
+            "description": {
+              "content": "成功httpCode返回200",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ruleChain",
+                ":ruleChainId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleChainId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f107c94-af24-42d1-8a46-97609a1f0d3e",
+              "name": "成功 / Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ruleChain",
+                    ":ruleChainId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleChainId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ea9a0e46-f3ee-440f-8f06-65f0739305a7",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ruleChain",
+                    ":ruleChainId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleChainId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4616ae5a-9fb0-41ec-becb-22db87620564",
+      "name": "Thing Model (Telemetry Profile)",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "18438f92-d333-4bbd-ba32-816de3cc7550",
+          "name": "保存/修改产品物模型测点信息",
+          "request": {
+            "name": "保存/修改产品物模型测点信息",
+            "description": {},
+            "url": {
+              "path": [
+                "mergerTelemetryProfile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"dataType\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"dataTypeId\": \"<string>\",\n  \"unitId\": \"<string>\",\n  \"cnName\": \"<string>\",\n  \"belongingstation\": \"<string>\",\n  \"description\": \"<string>\",\n  \"AccessToken\": \"<string>\",\n  \"enDataType\": \"<string>\",\n  \"label\": \"<string>\",\n  \"labelList\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"productManageId\": {\n    \"id\": \"<string>\",\n    \"entityType\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8e493e12-a19c-4033-b4f5-ad13fe5905b7",
+              "name": "业务数据 / Business payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mergerTelemetryProfile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"dataType\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"dataTypeId\": \"<string>\",\n  \"unitId\": \"<string>\",\n  \"cnName\": \"<string>\",\n  \"belongingstation\": \"<string>\",\n  \"description\": \"<string>\",\n  \"AccessToken\": \"<string>\",\n  \"enDataType\": \"<string>\",\n  \"label\": \"<string>\",\n  \"labelList\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"productManageId\": {\n    \"id\": \"<string>\",\n    \"entityType\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"productManageId\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"tenantId\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"name\": \"string\",\n  \"cnName\": \"string\",\n  \"unit\": \"string\",\n  \"dataType\": \"string\",\n  \"description\": \"string\",\n  \"enDataType\": \"string\",\n  \"unitId\": \"string\",\n  \"dataTypeId\": \"string\",\n  \"label\": \"string\",\n  \"id\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"createdTime\": 2897.488769830515\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab001f0c-ff1d-4082-9998-3eb32311e973",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mergerTelemetryProfile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"dataType\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"dataTypeId\": \"<string>\",\n  \"unitId\": \"<string>\",\n  \"cnName\": \"<string>\",\n  \"belongingstation\": \"<string>\",\n  \"description\": \"<string>\",\n  \"AccessToken\": \"<string>\",\n  \"enDataType\": \"<string>\",\n  \"label\": \"<string>\",\n  \"labelList\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"productManageId\": {\n    \"id\": \"<string>\",\n    \"entityType\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12702e4f-de69-467d-9018-197f074b0055",
+          "name": "保存/修改设备物模型测点信息",
+          "request": {
+            "name": "保存/修改设备物模型测点信息",
+            "description": {},
+            "url": {
+              "path": [
+                "device",
+                "telemetryProfile",
+                "mergerTelemetryProfile",
+                ":deviceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"dataType\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"dataTypeId\": \"<string>\",\n  \"unitId\": \"<string>\",\n  \"cnName\": \"<string>\",\n  \"belongingstation\": \"<string>\",\n  \"description\": \"<string>\",\n  \"AccessToken\": \"<string>\",\n  \"enDataType\": \"<string>\",\n  \"label\": \"<string>\",\n  \"labelList\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "316394b5-486e-4842-a1a0-8f4ad5621933",
+              "name": "业务数据 / Business payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "telemetryProfile",
+                    "mergerTelemetryProfile",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"dataType\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"dataTypeId\": \"<string>\",\n  \"unitId\": \"<string>\",\n  \"cnName\": \"<string>\",\n  \"belongingstation\": \"<string>\",\n  \"description\": \"<string>\",\n  \"AccessToken\": \"<string>\",\n  \"enDataType\": \"<string>\",\n  \"label\": \"<string>\",\n  \"labelList\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deviceProfileId\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"deviceId\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"name\": \"string\",\n  \"cnName\": \"string\",\n  \"unit\": \"string\",\n  \"dataType\": \"string\",\n  \"description\": \"string\",\n  \"enDataType\": \"string\",\n  \"unitId\": \"string\",\n  \"dataTypeId\": \"string\",\n  \"label\": \"string\",\n  \"id\": {\n    \"entityType\": \"string\",\n    \"id\": \"string\"\n  },\n  \"createdTime\": 3428.0601281231725\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8ec3441-aeae-4b34-bc9c-3b4ee06b0c5f",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "telemetryProfile",
+                    "mergerTelemetryProfile",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"dataType\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"dataTypeId\": \"<string>\",\n  \"unitId\": \"<string>\",\n  \"cnName\": \"<string>\",\n  \"belongingstation\": \"<string>\",\n  \"description\": \"<string>\",\n  \"AccessToken\": \"<string>\",\n  \"enDataType\": \"<string>\",\n  \"label\": \"<string>\",\n  \"labelList\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bed9801b-6238-45c8-8750-95a37e93352b",
+          "name": "分页查询产品物模型",
+          "request": {
+            "name": "分页查询产品物模型",
+            "description": {},
+            "url": {
+              "path": [
+                "pageByTenantIdAndProductId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>",
+                  "description": "(Required) 页数（从0开始）"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<string>",
+                  "description": "(Required) 每页最大数量"
+                },
+                {
+                  "disabled": false,
+                  "key": "tbProductManageId",
+                  "value": "<string>",
+                  "description": "(Required) 产品id"
+                },
+                {
+                  "disabled": false,
+                  "key": "textSearch",
+                  "value": "<string>",
+                  "description": "测点名称"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c03845d-93b8-4f84-8f0f-f17e08edbb03",
+              "name": "业务数据 / Business payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pageByTenantIdAndProductId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tbProductManageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "textSearch",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"productManageId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"tenantId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"name\": \"string\",\n      \"cnName\": \"string\",\n      \"unit\": \"string\",\n      \"dataType\": \"string\",\n      \"description\": \"string\",\n      \"enDataType\": \"string\",\n      \"unitId\": \"string\",\n      \"dataTypeId\": \"string\",\n      \"label\": \"string\",\n      \"id\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"createdTime\": 7360.212794790402\n    },\n    {\n      \"productManageId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"tenantId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"name\": \"string\",\n      \"cnName\": \"string\",\n      \"unit\": \"string\",\n      \"dataType\": \"string\",\n      \"description\": \"string\",\n      \"enDataType\": \"string\",\n      \"unitId\": \"string\",\n      \"dataTypeId\": \"string\",\n      \"label\": \"string\",\n      \"id\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"createdTime\": 4644.686942711346\n    }\n  ],\n  \"totalPages\": 4873.191544215747,\n  \"totalElements\": 3637.3899662883723,\n  \"hasNext\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1d53557-4296-41e1-a417-1e9a54eabff9",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pageByTenantIdAndProductId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tbProductManageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "textSearch",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45f1f57c-a733-49d2-9cbd-2c7536f01dc7",
+          "name": "分页查询设备物模型",
+          "request": {
+            "name": "分页查询设备物模型",
+            "description": {},
+            "url": {
+              "path": [
+                "device",
+                "telemetryProfilePage",
+                ":deviceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>",
+                  "description": "(Required) 页数（从0开始）"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<string>",
+                  "description": "(Required) 每页最大数量"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fc31d3a2-8d87-4c76-a3cb-f02c39a31bc5",
+              "name": "业务数据 / Business payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "telemetryProfilePage",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"deviceProfileId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"deviceId\": \"string\",\n      \"name\": \"string\",\n      \"cnName\": \"string\",\n      \"unit\": \"string\",\n      \"dataType\": \"string\",\n      \"description\": \"string\",\n      \"enDataType\": \"string\",\n      \"unitId\": \"string\",\n      \"dataTypeId\": \"string\",\n      \"label\": \"string\",\n      \"id\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"createdTime\": 7850.731593694524\n    },\n    {\n      \"deviceProfileId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"deviceId\": \"string\",\n      \"name\": \"string\",\n      \"cnName\": \"string\",\n      \"unit\": \"string\",\n      \"dataType\": \"string\",\n      \"description\": \"string\",\n      \"enDataType\": \"string\",\n      \"unitId\": \"string\",\n      \"dataTypeId\": \"string\",\n      \"label\": \"string\",\n      \"id\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"createdTime\": 3818.6745761321704\n    }\n  ],\n  \"totalPages\": 7911.545999113418,\n  \"totalElements\": 5697.351397716557,\n  \"hasNext\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70ae2bda-0988-4ebb-92aa-bbd7b2e1fed8",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "telemetryProfilePage",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6fe99c62-542b-4d86-9483-5e873949423d",
+          "name": "根据测点id删除产品物模型测点信息",
+          "request": {
+            "name": "根据测点id删除产品物模型测点信息",
+            "description": {
+              "content": "成功httpCode返回200",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deleteTelemetryProfileById",
+                ":tbProductTelemetryProfileId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tbProductTelemetryProfileId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "558ef83d-afe3-408e-8132-7263c6a6b0ec",
+              "name": "成功 / Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deleteTelemetryProfileById",
+                    ":tbProductTelemetryProfileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tbProductTelemetryProfileId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f1040ab4-c68f-4588-8d8b-7bba9ba3ad9c",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deleteTelemetryProfileById",
+                    ":tbProductTelemetryProfileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tbProductTelemetryProfileId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66499326-6719-4b36-b679-2f97838297f5",
+          "name": "根据测点id删除设备物模型测点信息",
+          "request": {
+            "name": "根据测点id删除设备物模型测点信息",
+            "description": {
+              "content": "成功httpCode返回200",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "device",
+                "telemetryProfile",
+                "deleteTelemetryProfileById",
+                ":deviceId",
+                ":deviceTelemetryProfileId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceTelemetryProfileId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8108b925-1f73-4bd4-8378-6a40f0867934",
+              "name": "成功 / Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "telemetryProfile",
+                    "deleteTelemetryProfileById",
+                    ":deviceId",
+                    ":deviceTelemetryProfileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceTelemetryProfileId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "84b4477b-8c5d-42f7-9475-e046c61d65c8",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "telemetryProfile",
+                    "deleteTelemetryProfileById",
+                    ":deviceId",
+                    ":deviceTelemetryProfileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceTelemetryProfileId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "8a205e68-c90d-4022-ab8a-a3964c0af369",
+      "name": "Time-series Data",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1d53adb9-6fed-4f02-aa25-34906cca5b31",
+          "name": "查询历史设备遥测数据、查询最新设备遥测数据",
+          "request": {
+            "name": "查询历史设备遥测数据、查询最新设备遥测数据",
+            "description": {},
+            "url": {
+              "path": [
+                "device",
+                "meta",
+                ":deviceId",
+                "values",
+                "timeseries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>",
+                  "description": "(Required) 页码"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<string>",
+                  "description": "(Required) 数据数量"
+                },
+                {
+                  "disabled": false,
+                  "key": "deviceTelemetryProfileId",
+                  "value": "<string>",
+                  "description": "(Required) 测点名称"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5d24f42-24d4-4dde-b77a-abcab0cc90dd",
+              "name": "业务数据 / Business payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "meta",
+                    ":deviceId",
+                    "values",
+                    "timeseries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deviceTelemetryProfileId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"deviceId\": \"string\",\n      \"deviceRealName\": \"string\",\n      \"deviceName\": \"string\",\n      \"valueAsString\": \"string\",\n      \"value\": \"string\",\n      \"key\": \"string\",\n      \"jsonValue\": \"string\",\n      \"strValue\": \"string\",\n      \"booleanValue\": \"string\",\n      \"longValue\": \"string\",\n      \"doubleValue\": \"string\",\n      \"dataType\": \"string\",\n      \"ts\": 4748.86353609824\n    },\n    {\n      \"deviceId\": \"string\",\n      \"deviceRealName\": \"string\",\n      \"deviceName\": \"string\",\n      \"valueAsString\": \"string\",\n      \"value\": \"string\",\n      \"key\": \"string\",\n      \"jsonValue\": \"string\",\n      \"strValue\": \"string\",\n      \"booleanValue\": \"string\",\n      \"longValue\": \"string\",\n      \"doubleValue\": \"string\",\n      \"dataType\": \"string\",\n      \"ts\": 8033.506676435332\n    }\n  ],\n  \"totalPages\": 814.6166376113296,\n  \"totalElements\": 5148.896316113629,\n  \"hasNext\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f5513be-5659-4124-9f93-877d70f89868",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "meta",
+                    ":deviceId",
+                    "values",
+                    "timeseries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deviceTelemetryProfileId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "08ff8fba-20bb-4b2f-add8-662708207d49",
+      "name": "Attribute Data",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d29eb43a-dc0d-4854-b38a-7aa112ea9e79",
+          "name": "查询最新设备属性数据",
+          "request": {
+            "name": "查询最新设备属性数据",
+            "description": {},
+            "url": {
+              "path": [
+                ":entityType",
+                ":entityId",
+                "attributeProfilePage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "entityType",
+                  "value": "<string>",
+                  "description": "(Required) 固定值-DEVICE"
+                },
+                {
+                  "disabled": false,
+                  "key": "entityId",
+                  "value": "<string>",
+                  "description": "(Required) 设备ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>",
+                  "description": "(Required) 页码"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<string>",
+                  "description": "(Required) 每页数据条数"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entityType",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entityId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de366fc5-1b05-4f0b-a6ab-695731618ffa",
+              "name": "业务数据 / Business payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":entityType",
+                    ":entityId",
+                    "attributeProfilePage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityType",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"entityId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"name\": \"string\",\n      \"cnName\": \"string\",\n      \"attrScope\": \"string\",\n      \"unit\": \"string\",\n      \"dataType\": \"string\",\n      \"description\": \"string\",\n      \"enDataType\": \"string\",\n      \"unitId\": \"string\",\n      \"dataTypeId\": \"string\",\n      \"dataLimit\": {\n        \"dataType\": \"string\",\n        \"booleanList\": [\n          {\n            \"value\": \"string\",\n            \"description\": \"string\"\n          },\n          {\n            \"value\": \"string\",\n            \"description\": \"string\"\n          }\n        ],\n        \"max\": 2285.150051951462,\n        \"min\": 1207.5560260120399,\n        \"unit\": \"string\",\n        \"unitId\": \"string\",\n        \"date\": false\n      },\n      \"value\": \"string\",\n      \"id\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"createdTime\": 3315.908179221406\n    },\n    {\n      \"entityId\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"name\": \"string\",\n      \"cnName\": \"string\",\n      \"attrScope\": \"string\",\n      \"unit\": \"string\",\n      \"dataType\": \"string\",\n      \"description\": \"string\",\n      \"enDataType\": \"string\",\n      \"unitId\": \"string\",\n      \"dataTypeId\": \"string\",\n      \"dataLimit\": {\n        \"dataType\": \"string\",\n        \"booleanList\": [\n          {\n            \"value\": \"string\",\n            \"description\": \"string\"\n          },\n          {\n            \"value\": \"string\",\n            \"description\": \"string\"\n          }\n        ],\n        \"max\": 6975.345459227935,\n        \"min\": 9095.495239069778,\n        \"unit\": \"string\",\n        \"unitId\": \"string\",\n        \"date\": false\n      },\n      \"value\": \"string\",\n      \"id\": {\n        \"entityType\": \"string\",\n        \"id\": \"string\"\n      },\n      \"createdTime\": 9162.928044028906\n    }\n  ],\n  \"totalPages\": 8086.54538996071,\n  \"totalElements\": 7259.903963942773,\n  \"hasNext\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aeab9a5b-433e-479b-8b38-291fbf4e47a2",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":entityType",
+                    ":entityId",
+                    "attributeProfilePage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityType",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4d5eeca3-a14b-4566-a7cb-83ef74cdbd13",
+      "name": "Device RPC",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d6ba819a-d71c-45b6-a1ab-58cbf2ff5150",
+          "name": "设备调试指令下发_ONEWAY",
+          "request": {
+            "name": "设备调试指令下发_ONEWAY",
+            "description": {
+              "content": "成功httpCode返回200",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rpc",
+                "oneway",
+                ":deviceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"<string>\",\n  \"params\": {},\n  \"timeout\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f7c008f7-75c7-435d-9c8d-4344d83f200c",
+              "name": "成功 / Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rpc",
+                    "oneway",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"params\": {},\n  \"timeout\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b6e66e1-28f7-4828-a6e6-7165fc07e944",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rpc",
+                    "oneway",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"params\": {},\n  \"timeout\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "56c34931-b9c9-44c4-9185-3d6ccb8b1698",
+          "name": "设备调试指令下发_TWOWAY",
+          "request": {
+            "name": "设备调试指令下发_TWOWAY",
+            "description": {
+              "content": "成功httpCode返回200",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rpc",
+                "twoway",
+                ":deviceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"<string>\",\n  \"params\": {},\n  \"timeout\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f11a77cd-234b-4095-9f96-9594ff5c10b1",
+              "name": "成功 / Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rpc",
+                    "twoway",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"params\": {},\n  \"timeout\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5dc57c0f-0779-4a7d-b566-c7a12e9c8756",
+              "name": "失败响应 / Failure envelope documented in 公共分类 › 状态码描述",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rpc",
+                    "twoway",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"params\": {},\n  \"timeout\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 500,\n  \"message\": \"内部配置错误\",\n  \"errorCode\": 2,\n  \"timestamp\": \"2023-08-04T00:56:54.243+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "da2026fa-34a1-4e71-a75b-e47ae3a5ba05",
+    "name": "COSMOPlat IoT Platform OpenAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Machine-readable transcription of the COSMOPlat 物联开发平台 (IoT development platform) \"OpenApi-线上\" reference published by COSMOPlat at https://www.cosmoplat.com/help/detail/304/1038\n\nThe provider publishes this contract as an HTML reference table only — no OpenAPI, Swagger, Postman or other machine-readable artifact is served anywhere on cosmoplat.com. This document transcribes that reference so it can be read by a machine.\n\nGAPS THE PROVIDER HAS NOT PUBLISHED (deliberately left empty here rather than guessed):\n  * No base URL / server host is stated anywhere in the reference, so `servers` is omitted.\n  * No authentication scheme is documented for these operations, so `securitySchemes` is empty.\n  * No per-operation 4xx/5xx catalogue is published; the single documented failure envelope from 公共分类 › 状态码描述 is wired as the `default` response.\n\n\nContact Support:\n Name: COSMOPlat\n Email: market@cosmoplat.com",
+      "type": "text/plain"
+    }
+  }
+}

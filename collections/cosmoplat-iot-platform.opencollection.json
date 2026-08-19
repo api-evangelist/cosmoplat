@@ -1,0 +1,716 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "COSMOPlat IoT Platform OpenAPI",
+    "version": "线上 (online)"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "分页查询产品信息",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pageTbProductManage",
+            "params": [
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "页数（从0开始）"
+              },
+              {
+                "name": "pageSize",
+                "value": "30",
+                "type": "query",
+                "description": "每页最大数量"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "query",
+                "description": "产品标识"
+              },
+              {
+                "name": "textSearch",
+                "value": "",
+                "type": "query",
+                "description": "产品名称"
+              },
+              {
+                "name": "strNodeType",
+                "value": "",
+                "type": "query",
+                "description": "节点类型： DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备"
+              }
+            ]
+          },
+          "docs": "分页查询产品信息"
+        },
+        {
+          "info": {
+            "name": "创建产品",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/tbProductManage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "创建产品"
+        },
+        {
+          "info": {
+            "name": "查询产品详情",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tbProductManage/:tbProductManageId",
+            "params": [
+              {
+                "name": "tbProductManageId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "查询产品详情"
+        },
+        {
+          "info": {
+            "name": "删除产品",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/tbProductManage/:tbProductManageId",
+            "params": [
+              {
+                "name": "tbProductManageId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "成功httpCode返回200"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Device Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "分页查询设备信息",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tenant/devicesnew",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "页数（从0开始）"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "每页最大数量"
+              },
+              {
+                "name": "productManageId",
+                "value": "",
+                "type": "query",
+                "description": "产品配置id"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "设备标识"
+              },
+              {
+                "name": "realName",
+                "value": "",
+                "type": "query",
+                "description": "设备名称"
+              },
+              {
+                "name": "nodeType",
+                "value": "",
+                "type": "query",
+                "description": "节点类型： DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备"
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "设备状态true在线false离线"
+              }
+            ]
+          },
+          "docs": "分页查询设备信息"
+        },
+        {
+          "info": {
+            "name": "创建设备",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/device",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "创建设备"
+        },
+        {
+          "info": {
+            "name": "删除设备",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/device/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "成功httpCode返回200"
+        },
+        {
+          "info": {
+            "name": "获取设备详情",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/device/info/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "获取设备详情"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Alarm Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "分页查询告警规则",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/alarm/setting/page",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "分页查询告警规则"
+        },
+        {
+          "info": {
+            "name": "创建告警规则",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/alarm/setting",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "创建告警规则"
+        },
+        {
+          "info": {
+            "name": "删除告警规则",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/alarm/setting/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "删除告警规则"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Alarm Records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "分页查询告警记录",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/alarm/:entityType/getTenantAlarms",
+            "params": [
+              {
+                "name": "entityType",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "分页查询告警记录"
+        },
+        {
+          "info": {
+            "name": "处理告警记录",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/alarm/setAlarmDetails/:alarmId",
+            "params": [
+              {
+                "name": "alarmId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "成功httpCode返回200。"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Rule Chains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "分页查询规则链",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ruleChains",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "页数（从0开始）"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "每页最大数量"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "类型"
+              },
+              {
+                "name": "textSearch",
+                "value": "",
+                "type": "query",
+                "description": "搜索文本"
+              }
+            ]
+          },
+          "docs": "分页查询规则链"
+        },
+        {
+          "info": {
+            "name": "创建规则链",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ruleChain",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "创建规则链"
+        },
+        {
+          "info": {
+            "name": "删除规则链",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/ruleChain/:ruleChainId",
+            "params": [
+              {
+                "name": "ruleChainId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "成功httpCode返回200"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Thing Model (Telemetry Profile)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "保存/修改产品物模型测点信息",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mergerTelemetryProfile",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "保存/修改产品物模型测点信息"
+        },
+        {
+          "info": {
+            "name": "保存/修改设备物模型测点信息",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/device/telemetryProfile/mergerTelemetryProfile/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "保存/修改设备物模型测点信息"
+        },
+        {
+          "info": {
+            "name": "分页查询产品物模型",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pageByTenantIdAndProductId",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "页数（从0开始）"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "每页最大数量"
+              },
+              {
+                "name": "tbProductManageId",
+                "value": "",
+                "type": "query",
+                "description": "产品id"
+              },
+              {
+                "name": "textSearch",
+                "value": "",
+                "type": "query",
+                "description": "测点名称"
+              }
+            ]
+          },
+          "docs": "分页查询产品物模型"
+        },
+        {
+          "info": {
+            "name": "分页查询设备物模型",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/device/telemetryProfilePage/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "页数（从0开始）"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "每页最大数量"
+              }
+            ]
+          },
+          "docs": "分页查询设备物模型"
+        },
+        {
+          "info": {
+            "name": "根据测点id删除产品物模型测点信息",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/deleteTelemetryProfileById/:tbProductTelemetryProfileId",
+            "params": [
+              {
+                "name": "tbProductTelemetryProfileId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "成功httpCode返回200"
+        },
+        {
+          "info": {
+            "name": "根据测点id删除设备物模型测点信息",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/device/telemetryProfile/deleteTelemetryProfileById/:deviceId/:deviceTelemetryProfileId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deviceTelemetryProfileId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "成功httpCode返回200"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Time-series Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "查询历史设备遥测数据、查询最新设备遥测数据",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/device/meta/:deviceId/values/timeseries",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "页码"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "数据数量"
+              },
+              {
+                "name": "deviceTelemetryProfileId",
+                "value": "",
+                "type": "query",
+                "description": "测点名称"
+              }
+            ]
+          },
+          "docs": "查询历史设备遥测数据、查询最新设备遥测数据"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Attribute Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "查询最新设备属性数据",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:entityType/:entityId/attributeProfilePage",
+            "params": [
+              {
+                "name": "entityType",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "entityType",
+                "value": "",
+                "type": "query",
+                "description": "固定值-DEVICE"
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "query",
+                "description": "设备ID"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "页码"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "每页数据条数"
+              }
+            ]
+          },
+          "docs": "查询最新设备属性数据"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Device RPC",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "设备调试指令下发_ONEWAY",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/rpc/oneway/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "成功httpCode返回200"
+        },
+        {
+          "info": {
+            "name": "设备调试指令下发_TWOWAY",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/rpc/twoway/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "成功httpCode返回200"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

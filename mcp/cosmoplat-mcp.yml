@@ -4,50 +4,98 @@ status: candidate
 source: openapi/cosmoplat-iot-platform-openapi.yml
 published_by_provider: false
 pointer_emitted: false
-pointer_note: >-
-  No `type: MCPServer` pointer is wired into apis.yml. COSMOPlat operates no MCP server —
-  none is referenced in its documentation, its GitHub organization, its open-source
-  community, or any public MCP registry. This file is a candidate tool surface derived from
-  the transcribed contract, offered as a starting point if COSMOPlat builds one. Emitting a
-  pointer for a server that does not exist would be false credit.
+pointer_note: 'No `type: MCPServer` pointer is wired into apis.yml. COSMOPlat operates no MCP server —
+  none is referenced in its documentation, its GitHub organization, its open-source community, or any
+  public MCP registry. This file is a candidate tool surface derived from the transcribed contract, offered
+  as a starting point if COSMOPlat builds one. Emitting a pointer for a server that does not exist would
+  be false credit.'
 server:
   name: cosmoplat-iot
   transport: http
   url: null
 tools:
-- {name: list_products, description: Page product definitions, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#getPageTbProductManage'}
-- {name: get_product, description: Read one product definition, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#getTbProductManageByTbProductManageId'}
-- {name: create_product, description: Create a product definition, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#postTbProductManage'}
-- {name: delete_product, description: Delete a product definition, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#deleteTbProductManageByTbProductManageId'}
-- {name: list_devices, description: Page devices for the tenant, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#getTenantDevicesnew'}
-- {name: get_device, description: Read one device, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#getDeviceInfoByDeviceId'}
-- {name: create_device, description: Register a device, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#postDevice'}
-- {name: delete_device, description: Delete a device, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#deleteDeviceByDeviceId'}
-- {name: list_alarm_rules, description: Page alarm rules, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#postAlarmSettingPage'}
-- {name: create_alarm_rule, description: Create an alarm rule, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#postAlarmSetting'}
-- {name: delete_alarm_rule, description: Delete an alarm rule, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#deleteAlarmSettingById'}
-- {name: list_alarms, description: Page alarm records for the tenant, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#postAlarmByEntityTypeGetTenantAlarms'}
-- {name: handle_alarm, description: Record the handling of an alarm, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#postAlarmSetAlarmDetailsByAlarmId'}
-- {name: list_rule_chains, description: Page rule chains, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#getRuleChains'}
-- {name: create_rule_chain, description: Create a rule chain, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#postRuleChain'}
-- {name: delete_rule_chain, description: Delete a rule chain, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#deleteRuleChainByRuleChainId'}
-- {name: list_product_telemetry_points, description: Page a product's thing-model telemetry
-    points, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#getPageByTenantIdAndProductId'}
-- {name: save_product_telemetry_points, description: Save or modify a product's thing-model
-    telemetry points, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#postMergerTelemetryProfile'}
-- {name: list_device_telemetry_points, description: Page a device's thing-model telemetry
-    points, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#getDeviceTelemetryProfilePageByDeviceId'}
-- {name: save_device_telemetry_points, description: Save or modify a device's thing-model
-    telemetry points, source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#postDeviceTelemetryProfileMergerTelemetryProfileByDeviceId'}
-- {name: read_device_timeseries, description: Read latest or historical device telemetry,
-  source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#getDeviceMetaByDeviceIdValuesTimeseries'}
-- {name: read_entity_attributes, description: Read the latest attribute values on an entity,
-  source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#getByEntityTypeByEntityIdAttributeProfilePage'}
-- {name: dispatch_device_command_oneway, description: 'Fire-and-forget RPC to a device. Physical
-    consequence; no idempotency key exists.', source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#postRpcOnewayByDeviceId'}
-- {name: dispatch_device_command_twoway, description: 'Request/response RPC to a device. Physical
-    consequence; no idempotency key exists.', source_operation: 'openapi/cosmoplat-iot-platform-openapi.yml#postRpcTwowayByDeviceId'}
+- name: list_products
+  description: Page product definitions
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#getPageTbProductManage
+- name: get_product
+  description: Read one product definition
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#getTbProductManageByTbProductManageId
+- name: create_product
+  description: Create a product definition
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#postTbProductManage
+- name: delete_product
+  description: Delete a product definition
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#deleteTbProductManageByTbProductManageId
+- name: list_devices
+  description: Page devices for the tenant
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#getTenantDevicesnew
+- name: get_device
+  description: Read one device
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#getDeviceInfoByDeviceId
+- name: create_device
+  description: Register a device
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#postDevice
+- name: delete_device
+  description: Delete a device
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#deleteDeviceByDeviceId
+- name: list_alarm_rules
+  description: Page alarm rules
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#postAlarmSettingPage
+- name: create_alarm_rule
+  description: Create an alarm rule
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#postAlarmSetting
+- name: delete_alarm_rule
+  description: Delete an alarm rule
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#deleteAlarmSettingById
+- name: list_alarms
+  description: Page alarm records for the tenant
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#postAlarmByEntityTypeGetTenantAlarms
+- name: handle_alarm
+  description: Record the handling of an alarm
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#postAlarmSetAlarmDetailsByAlarmId
+- name: list_rule_chains
+  description: Page rule chains
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#getRuleChains
+- name: create_rule_chain
+  description: Create a rule chain
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#postRuleChain
+- name: delete_rule_chain
+  description: Delete a rule chain
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#deleteRuleChainByRuleChainId
+- name: list_product_telemetry_points
+  description: Page a product's thing-model telemetry points
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#getPageByTenantIdAndProductId
+- name: save_product_telemetry_points
+  description: Save or modify a product's thing-model telemetry points
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#postMergerTelemetryProfile
+- name: list_device_telemetry_points
+  description: Page a device's thing-model telemetry points
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#getDeviceTelemetryProfilePageByDeviceId
+- name: save_device_telemetry_points
+  description: Save or modify a device's thing-model telemetry points
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#postDeviceTelemetryProfileMergerTelemetryProfileByDeviceId
+- name: read_device_timeseries
+  description: Read latest or historical device telemetry
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#getDeviceMetaByDeviceIdValuesTimeseries
+- name: read_entity_attributes
+  description: Read the latest attribute values on an entity
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#getByEntityTypeByEntityIdAttributeProfilePage
+- name: dispatch_device_command_oneway
+  description: Fire-and-forget RPC to a device. Physical consequence; no idempotency key exists.
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#postRpcOnewayByDeviceId
+- name: dispatch_device_command_twoway
+  description: Request/response RPC to a device. Physical consequence; no idempotency key exists.
+  source_operation: openapi/cosmoplat-iot-platform-openapi.yml#postRpcTwowayByDeviceId
 searched:
-- {source: COSMOPlat documentation and help centre, result: no MCP reference}
-- {source: 'https://github.com/cosmoplat-dev', result: no MCP repository}
-- {source: public MCP registries and web search, result: no COSMOPlat MCP server}
+- source: COSMOPlat documentation and help centre
+  result: no MCP reference
+- source: https://github.com/cosmoplat-dev
+  result: no MCP repository
+- source: public MCP registries and web search
+  result: no COSMOPlat MCP server
+deployment:
+  mode: none
+  verified: derived
+  tools: 24
+  checked: '2026-08-12'
+  source: catalog MCP census
