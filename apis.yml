@@ -17,7 +17,7 @@ image: https://www.cosmoplat.com/_nuxt/img/logo_blue_no.7350967.svg
 url: https://raw.githubusercontent.com/api-evangelist/cosmoplat/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-08-11'
 modified: '2026-08-11'
 tags:
