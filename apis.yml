@@ -92,6 +92,11 @@ apis:
   - MQTT
   - Telemetry
   - Internet of Things
+  - Event
+  tags_raw:
+  - MQTT
+  - Telemetry
+  - Internet of Things
   - Events
   properties:
   - type: AsyncAPI
