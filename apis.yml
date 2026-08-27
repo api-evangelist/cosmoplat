@@ -38,54 +38,12 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 apis:
-- name: COSMOPlat IoT Platform OpenAPI
-  description: 'The 物联开发平台 (IoT development platform) API published by COSMOPlat as
-    the "OpenApi-线上" reference. Twenty-six documented operations across product management,
-    device management, alarm rules, alarm records, rule chains, thing-model (telemetry
-    profile) management, time-series telemetry, attribute data and device RPC. The
-    reference publishes paths, methods, query/body parameters and response field tables,
-    but does not publish a base URL or an authentication scheme.'
-  humanURL: https://www.cosmoplat.com/help/detail/304/1038
-  tags:
-  - Internet of Things
-  - Device Management
-  - Telemetry
-  - Industrial IoT
-  properties:
-  - type: OpenAPI
-    url: openapi/cosmoplat-iot-platform-openapi.yml
-  - type: Documentation
-    url: https://www.cosmoplat.com/help/detail/304/1012
-  - type: APIReference
-    url: https://www.cosmoplat.com/help/detail/304/1038
-  - type: Overlay
-    url: overlays/cosmoplat-iot-platform-overlay.yaml
-  - type: ErrorCatalog
-    url: errors/cosmoplat-problem-types.yml
-  - type: DataModel
-    url: data-model/cosmoplat-data-model.yml
-  x-evidence:
-    verified: '2026-08-11'
-    method: fetched
-    reference_url: https://www.cosmoplat.com/help/detail/304/1038
-    reference_http_status: 200
-    documents: 26 operations with HTTP method, path template, query/body parameter
-      tables and response field tables, rendered server-side as HTML.
-    base_url_published: false
-    base_url_note: 'The reference states no host. openapi.cosmoplat.com resolves (218.58.77.170)
-      and answers every path with an identical 200 {"errCode":"UNKNOWN_ERR","errMsg":"网关入口异常。"}
-      gateway envelope, including a nonsense control path — that is evidence of an
-      API gateway, not evidence that these operations are served there, so no baseURL
-      is asserted.'
-    auth_published: false
-    auth_note: No authentication scheme is documented for the REST operations. The
-      MQTT telemetry surface documents enterprise-ID / enterprise-secret credentials.
 - name: COSMOPlat IoT Telemetry (MQTT)
-  description: 'The MQTT publish/subscribe surface of the COSMOPlat IoT development
-    platform, documented in 数据流转引擎 (data flow engine). Devices publish telemetry to
-    iot.cosmoplat.com:1883 on v1/devices/me/telemetry; tenants subscribe to iot-mqtt.cosmoplat.com:11883
-    on tgwl/telemetry/{enterpriseId}/# authenticating with the enterprise ID and enterprise
-    secret.'
+  description: >-
+    The MQTT publish/subscribe surface of the COSMOPlat IoT development platform, documented in 数据流转引擎
+    (data flow engine). Devices publish telemetry to iot.cosmoplat.com:1883 on v1/devices/me/telemetry;
+    tenants subscribe to iot-mqtt.cosmoplat.com:11883 on tgwl/telemetry/{enterpriseId}/# authenticating
+    with the enterprise ID and enterprise secret.
   humanURL: https://www.cosmoplat.com/help/detail/304/1064
   baseURL: mqtt://iot-mqtt.cosmoplat.com:11883
   tags:
@@ -108,8 +66,173 @@ apis:
     method: fetched
     reference_url: https://www.cosmoplat.com/help/detail/304/1064
     reference_http_status: 200
-    documents: MQTT broker hosts and ports, credential model, topic address patterns
-      and a verbatim example message payload.
+    documents: >-
+      MQTT broker hosts and ports, credential model, topic address patterns and a verbatim example message
+      payload.
+- aid: cosmoplat:cosmoplat-alarm-records-api
+  name: Cosmoplat Alarm Records API
+  description: The Alarm Records API from Cosmoplat — 2 operation(s) for alarm records.
+  humanURL: https://www.cosmoplat.com/help/detail/304/1038
+  baseURL: mqtt://iot-mqtt.cosmoplat.com:11883
+  tags:
+  - Alarm Records
+  properties:
+  - type: OpenAPI
+    url: openapi/cosmoplat-alarm-records-api-openapi.yml
+  - type: Documentation
+    url: https://www.cosmoplat.com/help/detail/304/1012
+  - type: APIReference
+    url: https://www.cosmoplat.com/help/detail/304/1038
+  - type: ErrorCatalog
+    url: errors/cosmoplat-problem-types.yml
+  - type: DataModel
+    url: data-model/cosmoplat-data-model.yml
+- aid: cosmoplat:cosmoplat-alarm-rules-api
+  name: Cosmoplat Alarm Rules API
+  description: The Alarm Rules API from Cosmoplat — 3 operation(s) for alarm rules.
+  humanURL: https://www.cosmoplat.com/help/detail/304/1038
+  baseURL: mqtt://iot-mqtt.cosmoplat.com:11883
+  tags:
+  - Alarm Rules
+  properties:
+  - type: OpenAPI
+    url: openapi/cosmoplat-alarm-rules-api-openapi.yml
+  - type: Documentation
+    url: https://www.cosmoplat.com/help/detail/304/1012
+  - type: APIReference
+    url: https://www.cosmoplat.com/help/detail/304/1038
+  - type: ErrorCatalog
+    url: errors/cosmoplat-problem-types.yml
+  - type: DataModel
+    url: data-model/cosmoplat-data-model.yml
+- aid: cosmoplat:cosmoplat-attribute-data-api
+  name: Cosmoplat Attribute Data API
+  description: The Attribute Data API from Cosmoplat — 1 operation(s) for attribute data.
+  humanURL: https://www.cosmoplat.com/help/detail/304/1038
+  baseURL: mqtt://iot-mqtt.cosmoplat.com:11883
+  tags:
+  - Attribute Data
+  properties:
+  - type: OpenAPI
+    url: openapi/cosmoplat-attribute-data-api-openapi.yml
+  - type: Documentation
+    url: https://www.cosmoplat.com/help/detail/304/1012
+  - type: APIReference
+    url: https://www.cosmoplat.com/help/detail/304/1038
+  - type: ErrorCatalog
+    url: errors/cosmoplat-problem-types.yml
+  - type: DataModel
+    url: data-model/cosmoplat-data-model.yml
+- aid: cosmoplat:cosmoplat-device-management-api
+  name: Cosmoplat Device Management API
+  description: The Device Management API from Cosmoplat — 4 operation(s) for device management.
+  humanURL: https://www.cosmoplat.com/help/detail/304/1038
+  baseURL: mqtt://iot-mqtt.cosmoplat.com:11883
+  tags:
+  - Device Management
+  properties:
+  - type: OpenAPI
+    url: openapi/cosmoplat-device-management-api-openapi.yml
+  - type: Documentation
+    url: https://www.cosmoplat.com/help/detail/304/1012
+  - type: APIReference
+    url: https://www.cosmoplat.com/help/detail/304/1038
+  - type: ErrorCatalog
+    url: errors/cosmoplat-problem-types.yml
+  - type: DataModel
+    url: data-model/cosmoplat-data-model.yml
+- aid: cosmoplat:cosmoplat-device-rpc-api
+  name: Cosmoplat Device RPC API
+  description: The Device RPC API from Cosmoplat — 2 operation(s) for device rpc.
+  humanURL: https://www.cosmoplat.com/help/detail/304/1038
+  baseURL: mqtt://iot-mqtt.cosmoplat.com:11883
+  tags:
+  - Device RPC
+  properties:
+  - type: OpenAPI
+    url: openapi/cosmoplat-device-rpc-api-openapi.yml
+  - type: Documentation
+    url: https://www.cosmoplat.com/help/detail/304/1012
+  - type: APIReference
+    url: https://www.cosmoplat.com/help/detail/304/1038
+  - type: ErrorCatalog
+    url: errors/cosmoplat-problem-types.yml
+  - type: DataModel
+    url: data-model/cosmoplat-data-model.yml
+- aid: cosmoplat:cosmoplat-product-management-api
+  name: Cosmoplat Product Management API
+  description: The Product Management API from Cosmoplat — 3 operation(s) for product management.
+  humanURL: https://www.cosmoplat.com/help/detail/304/1038
+  baseURL: mqtt://iot-mqtt.cosmoplat.com:11883
+  tags:
+  - Product Management
+  properties:
+  - type: OpenAPI
+    url: openapi/cosmoplat-product-management-api-openapi.yml
+  - type: Documentation
+    url: https://www.cosmoplat.com/help/detail/304/1012
+  - type: APIReference
+    url: https://www.cosmoplat.com/help/detail/304/1038
+  - type: ErrorCatalog
+    url: errors/cosmoplat-problem-types.yml
+  - type: DataModel
+    url: data-model/cosmoplat-data-model.yml
+- aid: cosmoplat:cosmoplat-rule-chains-api
+  name: Cosmoplat Rule Chains API
+  description: The Rule Chains API from Cosmoplat — 3 operation(s) for rule chains.
+  humanURL: https://www.cosmoplat.com/help/detail/304/1038
+  baseURL: mqtt://iot-mqtt.cosmoplat.com:11883
+  tags:
+  - Rule Chains
+  properties:
+  - type: OpenAPI
+    url: openapi/cosmoplat-rule-chains-api-openapi.yml
+  - type: Documentation
+    url: https://www.cosmoplat.com/help/detail/304/1012
+  - type: APIReference
+    url: https://www.cosmoplat.com/help/detail/304/1038
+  - type: ErrorCatalog
+    url: errors/cosmoplat-problem-types.yml
+  - type: DataModel
+    url: data-model/cosmoplat-data-model.yml
+- aid: cosmoplat:cosmoplat-thing-model-telemetry-profile-api
+  name: Cosmoplat Thing Model (Telemetry Profile) API
+  description: >-
+    The Thing Model (Telemetry Profile) API from Cosmoplat — 6 operation(s) for thing model (telemetry
+    profile).
+  humanURL: https://www.cosmoplat.com/help/detail/304/1038
+  baseURL: mqtt://iot-mqtt.cosmoplat.com:11883
+  tags:
+  - Thing Model (Telemetry Profile)
+  properties:
+  - type: OpenAPI
+    url: openapi/cosmoplat-thing-model-telemetry-profile-api-openapi.yml
+  - type: Documentation
+    url: https://www.cosmoplat.com/help/detail/304/1012
+  - type: APIReference
+    url: https://www.cosmoplat.com/help/detail/304/1038
+  - type: ErrorCatalog
+    url: errors/cosmoplat-problem-types.yml
+  - type: DataModel
+    url: data-model/cosmoplat-data-model.yml
+- aid: cosmoplat:cosmoplat-time-series-data-api
+  name: Cosmoplat Time-series Data API
+  description: The Time-series Data API from Cosmoplat — 1 operation(s) for time-series data.
+  humanURL: https://www.cosmoplat.com/help/detail/304/1038
+  baseURL: mqtt://iot-mqtt.cosmoplat.com:11883
+  tags:
+  - Time-series Data
+  properties:
+  - type: OpenAPI
+    url: openapi/cosmoplat-time-series-data-api-openapi.yml
+  - type: Documentation
+    url: https://www.cosmoplat.com/help/detail/304/1012
+  - type: APIReference
+    url: https://www.cosmoplat.com/help/detail/304/1038
+  - type: ErrorCatalog
+    url: errors/cosmoplat-problem-types.yml
+  - type: DataModel
+    url: data-model/cosmoplat-data-model.yml
 common:
 - type: DomainSecurity
   url: security/cosmoplat-domain-security.yml
