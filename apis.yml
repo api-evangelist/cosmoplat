@@ -13,6 +13,18 @@ description: 'COSMOPlat (卡奥斯 COSMOPlat) is the industrial internet platfor
   thing-model, telemetry and device-RPC operations, alongside an MQTT telemetry publish/subscribe
   surface. COSMOPlat also runs an open-source developer community at openlab.cosmoplat.com
   and a GitHub organization at cosmoplat-dev.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.cosmoplat.com/_nuxt/img/logo_blue_no.7350967.svg
 url: https://raw.githubusercontent.com/api-evangelist/cosmoplat/refs/heads/main/apis.yml
 x-type: company
