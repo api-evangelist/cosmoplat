@@ -233,6 +233,8 @@ apis:
   humanURL: https://www.cosmoplat.com/help/detail/304/1038
   baseURL: mqtt://iot-mqtt.cosmoplat.com:11883
   tags:
+  - Time Series Data
+  tags_raw:
   - Time-series Data
   properties:
   - type: OpenAPI
