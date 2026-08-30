@@ -1,0 +1,130 @@
+openapi: 3.2.0
+info:
+  title: COSMOPlat IoT Platform Open Device RPC API
+  version: 线上 (online)
+  summary: Device, product, alarm, rule-chain, thing-model, telemetry and RPC operations for the COSMOPlat (Kaos) industrial IoT platform.
+  description: "Machine-readable transcription of the COSMOPlat 物联开发平台 (IoT development platform) \"OpenApi-线上\" reference published by COSMOPlat at https://www.cosmoplat.com/help/detail/304/1038\n\nThe provider publishes this contract as an HTML reference table only — no OpenAPI, Swagger, Postman or other machine-readable artifact is served anywhere on cosmoplat.com. This document transcribes that reference so it can be read by a machine.\n\nGAPS THE PROVIDER HAS NOT PUBLISHED (deliberately left empty here rather than guessed):\n  * No base URL / server host is stated anywhere in the reference, so `servers` is omitted.\n  * No authentication scheme is documented for these operations, so `securitySchemes` is empty.\n  * No per-operation 4xx/5xx catalogue is published; the single documented failure envelope from 公共分类 › 状态码描述 is wired as the `default` response.\n"
+  contact:
+    name: COSMOPlat
+    email: market@cosmoplat.com
+    url: https://www.cosmoplat.com/help
+  x-provenance:
+    authored_by: API Evangelist (catalog-authored)
+    method: generated
+    source: https://www.cosmoplat.com/help/detail/304/1038
+    generated: '2026-08-11'
+    note: Transcribed field-for-field from the provider's published HTML API reference. COSMOPlat does not publish an OpenAPI document; this is not a provider artifact. Re-harvest and replace verbatim if COSMOPlat ever serves one.
+tags:
+- name: Device RPC
+paths:
+  /rpc/oneway/{deviceId}:
+    post:
+      operationId: postRpcOnewayByDeviceId
+      summary: 设备调试指令下发_ONEWAY
+      tags:
+      - Device RPC
+      description: 成功httpCode返回200
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                  description: 方法，固定值：setApiCommand
+                params:
+                  type: object
+                  properties: {}
+                  description: 参数，json结构
+                timeout:
+                  type: number
+                  description: 超时时间
+      responses:
+        '200':
+          description: 成功 / Success
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 设备调试指令下发_ONEWAY
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /rpc/twoway/{deviceId}:
+    post:
+      operationId: postRpcTwowayByDeviceId
+      summary: 设备调试指令下发_TWOWAY
+      tags:
+      - Device RPC
+      description: 成功httpCode返回200
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                  description: 方法，固定值：setApiCommand
+                params:
+                  type: object
+                  properties: {}
+                  description: 参数，json结构
+                timeout:
+                  type: number
+                  description: 超时时间
+      responses:
+        '200':
+          description: 成功 / Success
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 设备调试指令下发_TWOWAY
+        url: https://www.cosmoplat.com/help/detail/304/1038
+components:
+  schemas:
+    Error:
+      type: object
+      description: 失败报文 / Failure envelope (公共分类 › 状态码描述)
+      properties:
+        status:
+          type: integer
+          description: 状态码，和 httpCode 一致 / status code, same as the HTTP status
+        message:
+          type: string
+          description: 状态描述 / status description
+        errorCode:
+          type: integer
+          description: 错误码 / error code
+        timestamp:
+          type: string
+          format: date-time
+          description: 时间戳 / timestamp
+      examples:
+      - status: 500
+        message: 内部配置错误
+        errorCode: 2
+        timestamp: '2023-08-04T00:56:54.243+00:00'
+externalDocs:
+  description: COSMOPlat IoT platform documentation
+  url: https://www.cosmoplat.com/help/detail/304/1012

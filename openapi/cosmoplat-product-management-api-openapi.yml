@@ -1,0 +1,395 @@
+openapi: 3.2.0
+info:
+  title: COSMOPlat IoT Platform Open Product Management API
+  version: 线上 (online)
+  summary: Device, product, alarm, rule-chain, thing-model, telemetry and RPC operations for the COSMOPlat (Kaos) industrial IoT platform.
+  description: "Machine-readable transcription of the COSMOPlat 物联开发平台 (IoT development platform) \"OpenApi-线上\" reference published by COSMOPlat at https://www.cosmoplat.com/help/detail/304/1038\n\nThe provider publishes this contract as an HTML reference table only — no OpenAPI, Swagger, Postman or other machine-readable artifact is served anywhere on cosmoplat.com. This document transcribes that reference so it can be read by a machine.\n\nGAPS THE PROVIDER HAS NOT PUBLISHED (deliberately left empty here rather than guessed):\n  * No base URL / server host is stated anywhere in the reference, so `servers` is omitted.\n  * No authentication scheme is documented for these operations, so `securitySchemes` is empty.\n  * No per-operation 4xx/5xx catalogue is published; the single documented failure envelope from 公共分类 › 状态码描述 is wired as the `default` response.\n"
+  contact:
+    name: COSMOPlat
+    email: market@cosmoplat.com
+    url: https://www.cosmoplat.com/help
+  x-provenance:
+    authored_by: API Evangelist (catalog-authored)
+    method: generated
+    source: https://www.cosmoplat.com/help/detail/304/1038
+    generated: '2026-08-11'
+    note: Transcribed field-for-field from the provider's published HTML API reference. COSMOPlat does not publish an OpenAPI document; this is not a provider artifact. Re-harvest and replace verbatim if COSMOPlat ever serves one.
+tags:
+- name: Product Management
+paths:
+  /pageTbProductManage:
+    get:
+      operationId: getPageTbProductManage
+      summary: 分页查询产品信息
+      tags:
+      - Product Management
+      parameters:
+      - name: page
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 页数（从0开始）
+        example: '0'
+      - name: pageSize
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 每页最大数量
+        example: '30'
+      - name: identifier
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 产品标识
+      - name: textSearch
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 产品名称
+      - name: strNodeType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 节点类型： DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值：TB_PRODUCT_MANAGE
+                            id:
+                              type: string
+                              description: 产品ID
+                          description: 产品ID
+                        createdTime:
+                          type: number
+                          description: 创建时间
+                        tenantId:
+                          type: object
+                          properties:
+                            entityType:
+                              type: string
+                              description: 固定值-TENANT
+                            id:
+                              type: string
+                              description: 租户ID
+                          description: 租户
+                        name:
+                          type: string
+                          description: 产品名称
+                        description:
+                          type: string
+                          description: 产品描述
+                        image:
+                          type: string
+                          description: 图片
+                        type:
+                          type: string
+                          description: 类型
+                        transportType:
+                          type: string
+                          description: 传输类型：DEFAULT，MQTT，LWM2M，SNMP，CoAP
+                        defaultRuleChainId:
+                          type: string
+                          description: 规则链ID
+                        nodeType:
+                          type: string
+                          description: 节点类型，DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备
+                        tbSupplierName:
+                          type: string
+                          description: 生产厂商
+                        identifier:
+                          type: string
+                          description: 产品标识
+                        productModel:
+                          type: string
+                          description: 产品型号
+                    description: 业务数据
+                  totalPages:
+                    type: number
+                    description: 总页数
+                  totalElements:
+                    type: number
+                    description: 总条数
+                  hasNext:
+                    type: boolean
+                    description: 是否存在下一条记录
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 分页查询产品信息
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /tbProductManage:
+    post:
+      operationId: postTbProductManage
+      summary: 创建产品
+      tags:
+      - Product Management
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 产品名称
+                nodeType:
+                  type: string
+                  description: 节点类型：DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备
+                defaultRuleChainId:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: 规则链ID
+                    entityType:
+                      type: string
+                      description: 类型：固定值-RULE_CHAIN
+                  required:
+                  - id
+                  - entityType
+                transportType:
+                  type: string
+                  description: 传输类型：DEFAULT，MQTT，LWM2M，SNMP，CoAP
+              required:
+              - name
+              - nodeType
+              - defaultRuleChainId
+              - transportType
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                      id:
+                        type: string
+                    description: 产品ID
+                  createdTime:
+                    type: number
+                    description: 创建时间
+                  tenantId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：TENANT
+                      id:
+                        type: string
+                        description: 租户ID
+                    description: 租户
+                  name:
+                    type: string
+                    description: 名称
+                  description:
+                    type: string
+                    description: 描述
+                  image:
+                    type: string
+                    description: 图片
+                  type:
+                    type: string
+                    description: 类型
+                  transportType:
+                    type: string
+                    description: 传输类型：DEFAULT，MQTT，LWM2M，SNMP，CoAP
+                  defaultRuleChainId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：RULE_CHAIN
+                      id:
+                        type: string
+                        description: 规则链ID
+                    description: 规则链ID
+                  nodeType:
+                    type: string
+                    description: 节点类型：DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备
+                  tbSupplierName:
+                    type: string
+                    description: 生产厂商
+                  identifier:
+                    type: string
+                    description: 产品标识
+                  productModel:
+                    type: string
+                    description: 产品型号
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 创建产品
+        url: https://www.cosmoplat.com/help/detail/304/1038
+  /tbProductManage/{tbProductManageId}:
+    delete:
+      operationId: deleteTbProductManageByTbProductManageId
+      summary: 删除产品
+      tags:
+      - Product Management
+      description: 成功httpCode返回200
+      parameters:
+      - name: tbProductManageId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 成功 / Success
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 删除产品
+        url: https://www.cosmoplat.com/help/detail/304/1038
+    get:
+      operationId: getTbProductManageByTbProductManageId
+      summary: 查询产品详情
+      tags:
+      - Product Management
+      parameters:
+      - name: tbProductManageId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 业务数据 / Business payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                      id:
+                        type: string
+                    description: 产品ID
+                  createdTime:
+                    type: number
+                    description: 创建时间
+                  tenantId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：TENANT
+                      id:
+                        type: string
+                        description: 租户ID
+                    description: 租户
+                  name:
+                    type: string
+                    description: 名称
+                  description:
+                    type: string
+                    description: 描述
+                  image:
+                    type: string
+                    description: 图片
+                  type:
+                    type: string
+                    description: 类型
+                  transportType:
+                    type: string
+                    description: 传输类型：DEFAULT，MQTT，LWM2M，SNMP，CoAP
+                  defaultRuleChainId:
+                    type: object
+                    properties:
+                      entityType:
+                        type: string
+                        description: 固定值：RULE_CHAIN
+                      id:
+                        type: string
+                        description: 规则链ID
+                    description: 规则链
+                  nodeType:
+                    type: string
+                    description: 节点类型：DIRECT_DEVICE:直连设备，GATEWAY_DEVICE:网关设备，GATEWAY_CHILD_DEVICE:网关子设备
+                  tbSupplierName:
+                    type: string
+                    description: 生产厂商
+                  identifier:
+                    type: string
+                    description: 产品标识
+                  productModel:
+                    type: string
+                    description: 产品型号
+        default:
+          description: 失败响应 / Failure envelope documented in 公共分类 › 状态码描述
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: 查询产品详情
+        url: https://www.cosmoplat.com/help/detail/304/1038
+components:
+  schemas:
+    Error:
+      type: object
+      description: 失败报文 / Failure envelope (公共分类 › 状态码描述)
+      properties:
+        status:
+          type: integer
+          description: 状态码，和 httpCode 一致 / status code, same as the HTTP status
+        message:
+          type: string
+          description: 状态描述 / status description
+        errorCode:
+          type: integer
+          description: 错误码 / error code
+        timestamp:
+          type: string
+          format: date-time
+          description: 时间戳 / timestamp
+      examples:
+      - status: 500
+        message: 内部配置错误
+        errorCode: 2
+        timestamp: '2023-08-04T00:56:54.243+00:00'
+externalDocs:
+  description: COSMOPlat IoT platform documentation
+  url: https://www.cosmoplat.com/help/detail/304/1012
