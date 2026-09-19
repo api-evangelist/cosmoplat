@@ -50,6 +50,18 @@ tags:
 - Company
 - Industrial Internet
 - Industrial IoT
+- IoT
+- Manufacturing
+- Smart Factory
+- Device Management
+- Digital Transformation
+- MQTT
+- Telemetry
+- China
+tags_raw:
+- Company
+- Industrial Internet
+- Industrial IoT
 - Internet of Things
 - Manufacturing
 - Smart Factory
@@ -75,7 +87,7 @@ apis:
   tags:
   - MQTT
   - Telemetry
-  - Internet of Things
+  - IoT
   - Event
   tags_raw:
   - MQTT
