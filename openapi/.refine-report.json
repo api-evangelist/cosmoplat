@@ -1,0 +1,36 @@
+{
+  "provider": "cosmoplat",
+  "sources": [
+    "_original/cosmoplat-iot-platform-openapi.yml"
+  ],
+  "outputs": [
+    "cosmoplat-alarm-records-api-openapi.yml",
+    "cosmoplat-alarm-rules-api-openapi.yml",
+    "cosmoplat-attribute-data-api-openapi.yml",
+    "cosmoplat-device-management-api-openapi.yml",
+    "cosmoplat-device-rpc-api-openapi.yml",
+    "cosmoplat-product-management-api-openapi.yml",
+    "cosmoplat-rule-chains-api-openapi.yml",
+    "cosmoplat-thing-model-telemetry-profile-api-openapi.yml",
+    "cosmoplat-time-series-data-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "cosmoplat-iot-platform-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "cosmoplat-alarm-records-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cosmoplat-alarm-rules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cosmoplat-attribute-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cosmoplat-device-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cosmoplat-device-rpc-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cosmoplat-product-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cosmoplat-rule-chains-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cosmoplat-thing-model-telemetry-profile-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cosmoplat-time-series-data-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

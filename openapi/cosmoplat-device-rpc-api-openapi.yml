@@ -3,7 +3,10 @@ info:
   title: COSMOPlat IoT Platform Open Device RPC API
   version: 线上 (online)
   summary: Device, product, alarm, rule-chain, thing-model, telemetry and RPC operations for the COSMOPlat (Kaos) industrial IoT platform.
-  description: "Machine-readable transcription of the COSMOPlat 物联开发平台 (IoT development platform) \"OpenApi-线上\" reference published by COSMOPlat at https://www.cosmoplat.com/help/detail/304/1038\n\nThe provider publishes this contract as an HTML reference table only — no OpenAPI, Swagger, Postman or other machine-readable artifact is served anywhere on cosmoplat.com. This document transcribes that reference so it can be read by a machine.\n\nGAPS THE PROVIDER HAS NOT PUBLISHED (deliberately left empty here rather than guessed):\n  * No base URL / server host is stated anywhere in the reference, so `servers` is omitted.\n  * No authentication scheme is documented for these operations, so `securitySchemes` is empty.\n  * No per-operation 4xx/5xx catalogue is published; the single documented failure envelope from 公共分类 › 状态码描述 is wired as the `default` response.\n"
+  description: 'Machine-readable transcription of the COSMOPlat 物联开发平台 (IoT development platform) "OpenApi-线上" reference published by COSMOPlat at https://www.cosmoplat.com/help/detail/304/1038
+
+
+    The provider publishes this contract as an HTML reference table only — no OpenAPI, Swagger, Postman or other machine-readable artifact is served anywhere on cosmoplat.com.'
   contact:
     name: COSMOPlat
     email: market@cosmoplat.com
