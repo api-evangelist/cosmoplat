@@ -58,6 +58,7 @@ tags:
 - MQTT
 - Telemetry
 - China
+- Real-Time
 tags_raw:
 - Company
 - Industrial Internet
@@ -70,6 +71,7 @@ tags_raw:
 - MQTT
 - Telemetry
 - China
+- Real-Time
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
