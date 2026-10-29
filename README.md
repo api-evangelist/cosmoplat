@@ -64,5 +64,146 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Cosmoplat is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.hiive.com/securities/cosmoplat-stock
+COSMOPlat (卡奥斯 COSMOPlat) is the industrial internet platform incubated by Haier Group and operated by COSMOPlat Digital Technology (Qingdao) Co., Ltd. Launched in 2017, it was China's first self-developed industrial internet platform built around mass customization, digitally integrating user interaction, R&D, procurement, production and service across a factory and its supply chain. Its product line spans smart-factory and MES systems, industrial IoT device connectivity, chemical-park management, smart energy control, equipment health management and a D3OS digital-twin offering, and it has been applied across roughly twenty industries and more than twenty countries. The developer-facing surface is the 物联开发平台 (IoT development platform), which publishes a public HTML API reference covering product, device, alarm, rule-chain, thing-model, telemetry and device-RPC operations, alongside an MQTT telemetry publish/subscribe surface. COSMOPlat also runs an open-source developer community at openlab.cosmoplat.com and a GitHub organization at cosmoplat-dev.
+
+**Areas:** Company · Industrial Internet · Industrial IoT · IoT · Manufacturing · Smart Factory · Device Management · Digital Transformation · MQTT · Telemetry · China · Real-Time
+
+## Cosmoplat on APIs.io
+
+Everything profiled for Cosmoplat is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/cosmoplat/](https://apis.io/providers/cosmoplat/)** — or go straight to one of the APIs or properties below.
+
+### APIs (10)
+
+- [COSMOPlat IoT Telemetry (MQTT)](https://apis.io/apis/cosmoplat/cosmoplat-iot-telemetry-mqtt/) — The MQTT publish/subscribe surface of the COSMOPlat IoT development platform, documented in 数据流转引擎 (data flow engine). Devices publish telemetry to…
+- [Cosmoplat Alarm Records API](https://apis.io/apis/cosmoplat/cosmoplat-alarm-records-api/) — The Alarm Records API from Cosmoplat — 2 operation(s) for alarm records.
+- [Cosmoplat Alarm Rules API](https://apis.io/apis/cosmoplat/cosmoplat-alarm-rules-api/) — The Alarm Rules API from Cosmoplat — 3 operation(s) for alarm rules.
+- [Cosmoplat Attribute Data API](https://apis.io/apis/cosmoplat/cosmoplat-attribute-data-api/) — The Attribute Data API from Cosmoplat — 1 operation(s) for attribute data.
+- [Cosmoplat Device Management API](https://apis.io/apis/cosmoplat/cosmoplat-device-management-api/) — The Device Management API from Cosmoplat — 4 operation(s) for device management.
+- [Cosmoplat Device RPC API](https://apis.io/apis/cosmoplat/cosmoplat-device-rpc-api/) — The Device RPC API from Cosmoplat — 2 operation(s) for device rpc.
+- [Cosmoplat Product Management API](https://apis.io/apis/cosmoplat/cosmoplat-product-management-api/) — The Product Management API from Cosmoplat — 3 operation(s) for product management.
+- [Cosmoplat Rule Chains API](https://apis.io/apis/cosmoplat/cosmoplat-rule-chains-api/) — The Rule Chains API from Cosmoplat — 3 operation(s) for rule chains.
+- [Cosmoplat Thing Model (Telemetry Profile) API](https://apis.io/apis/cosmoplat/cosmoplat-thing-model-telemetry-profile-api/) — The Thing Model (Telemetry Profile) API from Cosmoplat — 6 operation(s) for thing model (telemetry profile).
+- [Cosmoplat Time-series Data API](https://apis.io/apis/cosmoplat/cosmoplat-time-series-data-api/) — The Time-series Data API from Cosmoplat — 1 operation(s) for time-series data.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (2)
+
+Event-driven and webhook contracts.
+
+- [Cosmoplat Event Surface](https://apis.io/asyncapis/cosmoplat/cosmoplat-event-surface/)
+- [COSMOPlat IoT Telemetry (MQTT)](https://apis.io/asyncapis/cosmoplat/cosmoplat-iot-telemetry-asyncapi/)
+
+#### Event channels (3)
+
+Individual events and webhooks the provider emits.
+
+- [tgwl/telemetry/{enterpriseId}/#](https://apis.io/channels/cosmoplat/tgwl-telemetry-enterpriseid/)
+- [tgwl/telemetry/{enterpriseId}/{productIdentifier}](https://apis.io/channels/cosmoplat/tgwl-telemetry-enterpriseid-productidentifier/)
+- [v1/devices/me/telemetry](https://apis.io/channels/cosmoplat/v1-devices-me-telemetry/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [cosmoplat-iot](https://apis.io/servers/cosmoplat/cosmoplat-iot/)
+
+#### Collections (1)
+
+Postman and Open Collection request collections.
+
+- [COSMOPlat IoT Platform OpenAPI](https://apis.io/collections/cosmoplat/open-cosmoplat-iot-platform/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Cosmoplat Iot Platform Overlay](https://apis.io/overlays/cosmoplat/cosmoplat-iot-platform-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Cosmoplat Authentication](https://apis.io/security/cosmoplat/cosmoplat-authentication/)
+- [Cosmoplat Domain Security](https://apis.io/security/cosmoplat/cosmoplat-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Cosmoplat Plans Pricing](https://apis.io/plans/cosmoplat/cosmoplat-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Cosmoplat Rate Limits](https://apis.io/rate-limits/cosmoplat/cosmoplat-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.cosmoplat.com/)
+- [Documentation](https://www.cosmoplat.com/help)
+- [Getting started](https://www.cosmoplat.com/help/detail/304/1026)
+- [API reference](https://www.cosmoplat.com/help/detail/304/1038)
+- [Support](https://tianyun.cosmoplat.com/#/crworkorder)
+- [Blog](https://openlab.cosmoplat.com/article-list)
+- [Terms of service](https://sec.cosmoplat.com/api/agreement/service/1641867039600051)
+- [Privacy policy](https://sec.cosmoplat.com/api/agreement/private/1641867039600051)
+- [GitHub](https://github.com/cosmoplat-dev)
+
+## API Evangelist rating
+
+**Kin Score 28.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 67.0 |
+| Contract quality | 22.6 |
+| Contract governance | 4.5 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 42.3 |
+| Access clarity | 27.6 |
+
+**Agent readiness 31.5** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/cosmoplat/](https://apis.io/providers/cosmoplat/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Cosmoplat: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/cosmoplat/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
